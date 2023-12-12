@@ -1,0 +1,23 @@
+extends layout
+block content
+    div.login
+        h1 Crear una cuenta
+            form(action="login", method="post")
+                input.input(type="text" name="username" placeholder="Nombre" required="required")
+                input.input(type="password" name="password" placeholder="Apellidos" required="required")
+                input.input(type="text" name="username" placeholder="Numero de boleta" required="required")
+                input.input(type="password" name="password" placeholder="Contraseña" required="required")
+                input.input(type="date" name="password" placeholder="Contraseña" required="required")
+                label.la(for="opciones") 
+                    p.msgs Elige una opcion
+                select.custom-combobox(id="opciones" name="opciones")
+                    option(value="opcion1") Hombre
+                    option(value="opcion2") Mujer
+                button(type="submit" class="btn btn-primary btn-block btn-large") Registrarse
+                if error_msg.length > 0
+                    .error
+                        each err in error_msg
+                            p= err
+                p.msgs ¿Ya tienes una cuenta? 
+                    a.msgf(href="/login") Inicia sesion            
+                            
