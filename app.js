@@ -10,6 +10,9 @@ import userRoutes from './routes/userRoutes.js';
 import loginRoutes from './routes/loginRoutes.js';
 import errorController from './controllers/errorControllers.js';
 import flash from "connect-flash";
+import { createServer } from 'http';
+import { getIO, initSocket } from './config/socketioConfig.js';
+import sharedsession from "express-socket.io-session";
 
 const __dirname = (process.platform === "win32")
         ? path.resolve()
@@ -18,11 +21,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Configuración de express-session
-app.use(session({
+const expressSession = session({
     secret: 'perrita_putrefacta', // Reemplaza 'tu_secreto' con una cadena secreta real
     resave: false,
     saveUninitialized: false
-}));
+});
+app.use(expressSession);
 // Inicializaciones
 app.use(flash());
 app.use(passport.initialize());
@@ -56,6 +60,23 @@ app.get('/numero-sesiones', (req, res) => {
 });
 // Middleware para capturar Error 404
 app.use(errorController.error404);
-app.listen(PORT, () => {
+
+const server = createServer(app);
+initSocket(server);
+const io = getIO();
+io.use(sharedsession(expressSession, {
+    autoSave: true
+}));
+io.on('connection', (socket) => {
+    console.log("Cliente conectado al socket");
+    
+    socket.on('disconnect', () => {
+        console.log("Cliente desconectado");
+    });
+});
+io.on('error', (error) => {
+    console.error('Error en la inicialización de Socket.IO:', error);
+});
+server.listen(PORT, () => {
     console.log("Jalando");
 })

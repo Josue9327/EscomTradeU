@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.get('/login', (req, res) => {
     const error_msg = req.flash('error'); // Obtiene el mensaje de error
-    console.log(error_msg); // Depuración: Ver los mensajes flash
     res.render('login', { error_msg, activePage: 'login' });
 });
 router.post('/login', passport.authenticate('local', {
