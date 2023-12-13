@@ -22,10 +22,14 @@ html(lang="es")
                             a.nav-link.mx-2(href='/products' class=activePage === 'Products' ? 'active' : '') Prueba numero 2
                         li.nav-item
                             a.nav-link.mx-2(href='/pricing' class=activePage === 'Pricing' ? 'active' : '') Pricing
-                        li.nav-item
-                            a.nav-link.mx-2(href='/login' class=activePage === 'login' ? 'active' : '') Iniciar Sesion
-                        li.nav-item
-                            a.nav-link.mx-2(href='/signup' class=activePage === 'Signup' ? 'active' : '') Crear una cuenta
+                        if isAuthenticated
+                            li.nav-item
+                                a.nav-link.mx-2(href='/logout' class=activePage === 'login' ? 'active' : '') Cerrar Sesion
+                        else
+                            li.nav-item
+                                a.nav-link.mx-2(href='/login' class=activePage === 'login' ? 'active' : '') Iniciar Sesion
+                            li.nav-item
+                                a.nav-link.mx-2(href='/signup' class=activePage === 'Signup' ? 'active' : '') Crear una cuenta
                         li.nav-item
                             a.nav-link.mx-2(href='/signup' class=activePage === 'Signup' ? 'active' : '') Te amo Josue eres una verga y que csm la anciana de FEPI c:            
         block content

@@ -35,10 +35,25 @@ app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use((req, res, next) => {
+    // Pasar el estado de autenticación a todas las vistas
+    res.locals.isAuthenticated = req.isAuthenticated();
+    next();
+});
 //Rutas
 app.use('/',indexRoutes);
 app.use('/users',userRoutes);
 app.use('/',loginRoutes);
+app.get('/numero-sesiones', (req, res) => {
+    const sessionStore = req.sessionStore;
+    sessionStore.all((error, sessions) => {
+        if (error) {
+            res.status(500).send('Error al obtener sesiones');
+        } else {
+            res.send(`Número de sesiones activas: ${Object.keys(sessions).length}`);
+        }
+    });
+});
 // Middleware para capturar Error 404
 app.use(errorController.error404);
 app.listen(PORT, () => {

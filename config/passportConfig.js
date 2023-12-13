@@ -19,11 +19,6 @@ passport.use(new LocalStrategy(
                 }
 
                 const user = results[0];
-
-                // Aquí deberías verificar la contraseña usando una función de comparación de hash
-                // Por ejemplo, si estás usando bcrypt: bcrypt.compare(password, user.hashed_password, function(err, result) {...});
-                // En este ejemplo, se omite esa parte por simplicidad
-
                 bcrypt.compare(password, user.user_password, function(err, result) {
                     if (err) {
                         return done(err);
@@ -56,5 +51,4 @@ passport.deserializeUser(function(id, done) {
         });
     });
 });
-  
 export default passport;
