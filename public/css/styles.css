@@ -151,7 +151,7 @@ input:focus {
     margin : auto 4px;
   }
   #neubar a {
-  
+    color: white;
     padding-left:12px;
     padding-right:12px;
   }
@@ -163,21 +163,13 @@ input:focus {
   }
   /* Estilo para el combobox */
 select.custom-combobox {
-    display: block;
-    width: 100%; /* O el ancho que desees */
-    padding: .6em 1.4em .5em .8em; /* Tamaño del padding ajustable */
-    margin: 0.5em 0;
-    box-sizing: border-box;
-    border: 1px solid #fff; /* Borde blanco para contraste */
-    border-radius: 0.5em;
-    background-color: #670d10; /* Color de fondo que inicia el gradiente de la barra de navegación */
-    background-image: linear-gradient(to right, #670d10, #8c3d62); /* Gradiente para el combobox */
+    font-size: 13px;
     color: white;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1em;
-    line-height: 1.1;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    background-image: linear-gradient(to bottom, #6eb6de, #4a77d4);
+    border: 1px solid #3762bc;
+    border-radius: 0.5em;
+    padding: .1rem;
+    margin: 5%;
     -webkit-appearance: none; /* Remueve la apariencia por defecto en Safari */
     -moz-appearance: none; /* Remueve la apariencia por defecto en Firefox */
     appearance: none;
@@ -187,18 +179,9 @@ select.custom-combobox {
 /* Cambia la apariencia del combobox cuando se pasa el mouse sobre él */
 select.custom-combobox:hover {
     background-color: #8c3d62; /* Cambia al color final del gradiente */
-}
-
-/* Estilo para el ícono de flecha (si decides agregar uno) */
-select.custom-combobox:after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0 1em;
-    background: #8c3d62; /* Color final del gradiente para el ícono de flecha */
-    pointer-events: none;
-    transition: background-color 0.3s ease;
+    background-image: linear-gradient(to bottom, #670d10, #8c3d62);
+    border: 1px solid #670d10;
+    color: black;
 }
 
 /* Cambia la apariencia del combobox cuando está enfocado */

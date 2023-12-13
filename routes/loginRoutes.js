@@ -18,5 +18,6 @@ router.get('/signup', (req, res) => {
     console.log(error_msg); // Depuración: Ver los mensajes flash
     res.render('signup', { error_msg, activePage: 'Signup' });
 });
+router.post('/signup', loginControllers.signup);
 // Exportar el router
 export default router;
