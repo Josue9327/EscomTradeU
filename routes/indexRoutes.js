@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     res.render("index", {title: "hola"});
 });
 router.get('/principal', ensureAuthenticated, (req, res) => {
-    res.render("principal");
+    res.render("principal", { activePage: 'principal' });
     
 });
 export default router;
