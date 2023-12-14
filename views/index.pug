@@ -1,2 +1,17 @@
 extends layout
+
 block content
+    div.container
+            .carousel.slide(data-ride="carousel", style="max-width: 50%; margin: auto;")
+                .carousel-inner
+                    .carousel-item.active
+                        img.d-block.w-100(src="img/fondo.jpg", alt="Primera Imagen")
+                    .carousel-item
+                        img.d-block.w-100(src="img/fondo_2.jpg", alt="Segunda Imagen")
+                    .carousel-item
+                        img.d-block.w-100(src="img/fondo_1.jpg", alt="Tercera Imagen")
+                a.carousel-control-prev(href="#carouselExampleControls", role="button", data-slide="prev")
+                    span.carousel-control-prev-icon(aria-hidden="true")
+                a.carousel-control-next(href="#carouselExampleControls", role="button", data-slide="next")
+                    span.carousel-control-next-icon(aria-hidden="true")
+                    
