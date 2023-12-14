@@ -9,4 +9,8 @@ router.get('/principal', ensureAuthenticated, (req, res) => {
     res.render("principal", { activePage: 'principal' });
     
 });
+router.get('/contact', (req, res) => {
+    res.render("contact", { activePage: 'contact' });
+    
+});
 export default router;

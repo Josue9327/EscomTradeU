@@ -32,7 +32,14 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
-app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://example.com"],
+        scriptSrc: ["'self'", "https://stackpath.bootstrapcdn.com"],
+        // otras directivas...
+    }
+}));
 app.use(morgan("dev"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
