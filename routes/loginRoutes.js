@@ -1,6 +1,7 @@
 import express from 'express';
 import loginControllers from '../controllers/loginControllers.js';
 import passport  from '../config/passportConfig.js';
+import upload from '../config/multerConfig.js';
 const router = express.Router();
 
 router.get('/login', (req, res) => {
@@ -27,6 +28,6 @@ router.get('/logout', (req, res) => {
         });
     });
 });
-router.post('/signup', loginControllers.signup);
+router.post('/signup', upload.single('file'), loginControllers.signup);
 // Exportar el router
 export default router;

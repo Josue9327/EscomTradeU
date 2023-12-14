@@ -87,5 +87,8 @@ io.on('error', (error) => {
     console.error('Error en la inicialización de Socket.IO:', error);
 });
 server.listen(PORT, () => {
+    //const algo = path.join(__dirname, '/private/img_profile');
     console.log("Jalando");
+    //console.log(algo);
+    
 })

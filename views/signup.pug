@@ -2,12 +2,13 @@ extends layout
 block content
     div.login
         h1 Crear una cuenta
-            form(action="signup", method="post")
+            form(action="signup", method="post", enctype="multipart/form-data")
                 input.input(type="text" name="name" placeholder="Nombre" required="required")
                 input.input(type="text" name="lastname" placeholder="Apellidos" required="required")
                 input.input(type="text" name="credential_number" placeholder="Numero de boleta" required="required")
                 input.input(type="password" name="password" placeholder="Contraseña" required="required")
                 input.input(type="date" name="date" placeholder="Contraseña" required="required")
+                input.input(type="file" name="file" placeholder="Contraseña" required="required")
                 label.la(for="opciones") 
                     p.msgs Elige una opcion
                 select.custom-combobox(id="opciones" name="gender")
