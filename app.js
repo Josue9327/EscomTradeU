@@ -35,8 +35,10 @@ app.use(cors());
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://example.com"],
-        scriptSrc: ["'self'", "https://stackpath.bootstrapcdn.com"],
+        scriptSrc: [
+            "'self'",
+            "https://code.jquery.com/jquery-3.3.1.slim.min.js",
+            "https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"],  
         // otras directivas...
     }
 }));
