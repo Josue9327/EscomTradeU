@@ -5,6 +5,29 @@ block content
             form.formulario-busqueda
                 input.input-busqueda(type="search" placeholder="Search..." aria-label="Search")
                 input.boton-busqueda(type="submit" value="Buscar")
-    .contenedor
-        h1 Hola
+    div.container
+      h2.text-center Carrusel de Imágenes
+
+      .carousel.slide(data-ride="carousel")
+        .carousel-inner
+          //- Imagen 1
+          .carousel-item.active
+            img.d-block.w-100(src="img/fondo_1.jpg", alt="Primera Imagen")
+
+          //- Imagen 2
+          .carousel-item
+            img.d-block.w-100(src="img/fondo_2.jpg", alt="Segunda Imagen")
+
+          //- Imagen 3
+          .carousel-item
+            img.d-block.w-100(src="img/fondo.jpg", alt="Tercera Imagen")
+
+        //- Controles del carrusel
+        a.carousel-control-prev(href="#carouselExampleControls", role="button", data-slide="prev")
+          span.carousel-control-prev-icon(aria-hidden="true")
+          
+
+        a.carousel-control-next(href="#carouselExampleControls", role="button", data-slide="next")
+          span.carousel-control-next-icon(aria-hidden="true")
+          
                     
