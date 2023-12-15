@@ -13,6 +13,10 @@ const signup = async (req, res) => {
         const { name, lastname, credential_number, password, date, gender } = req.body;
         const hash = await hashPassword(password);
         pool.getConnection((err, connection) => {
+            if (err) {
+                console.error('Error al obtener la conexión:', err);
+                return; // Importante retornar para evitar ejecutar el resto del código
+            }
             connection.query('INSERT INTO users (user_name, user_lastname, user_credential_number, user_password, user_date, user_gender) VALUES (?, ?, ?, ?, ?, ?)',
                 [name, lastname, credential_number, hash, date, gender], (error, results) => {
                     if (error) {

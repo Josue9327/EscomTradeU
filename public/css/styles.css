@@ -247,3 +247,30 @@ select.custom-combobox:focus {
 .recuadro-delgado {
     width: 25%; /* Ancho del recuadro delgado */
 }
+#menuLateral {
+    height: 100%; /* Altura completa de la ventana */
+    width: 0; /* Ancho inicial, se cambiará con JavaScript */
+    position: fixed; /* Posicionamiento fijo */
+    z-index: 1; /* Asegura que esté sobre otros elementos */
+    top: 0; /* Desde la parte superior de la ventana */
+    left: 0; /* Alineado a la izquierda */
+    background-color: #111; /* Color de fondo */
+    overflow-x: hidden; /* Oculta el contenido desbordado */
+    transition: 0.5s; /* Transición suave */
+    padding-top: 60px; /* Espaciado superior */
+}
+#menuLateral ul {
+    list-style: none; /* Sin estilos de lista */
+    padding: 0;
+}
+#menuLateral ul li {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+#menuLateral ul li:hover {
+    color: #f1f1f1;
+}

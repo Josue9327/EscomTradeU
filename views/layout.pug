@@ -10,6 +10,7 @@ html(lang="es")
         if isAuthenticated
             script(src="/socket.io/socket.io.js")
             script(src="js/chat.js")
+            script(src="js/style.js")
     body
         nav.navbar.navbar-expand-sm.navbar-light#neubar
             .container-fluid
@@ -24,9 +25,12 @@ html(lang="es")
                         li.nav-item
                                 a.nav-link.mx-2(href='/principal' class=activePage === 'principal' ? 'active' : '') Pagina principal                       
                         li.nav-item
-                                img(src='/imagen/' + img_route alt='Imagen de perfil', height='120')
-                        li.nav-item
-                                a.nav-link.mx-2(href='/logout' class=activePage === 'login' ? 'active' : '') Cerrar Sesion
+                                img#menuImage(src='/imagen/' + img_route alt='Imagen de perfil', height='120', style='border-radius: 50%;cursor: pointer;')
+                                div#menuLateral(style='display: none;')
+                                    ul
+                                        li Opción 1
+                                        li Opción 2
+                                        li Opción 3
                     else
                         li.nav-item
                             a.nav-link.mx-2(href='/login' class=activePage === 'login' ? 'active' : '') Iniciar Sesion
