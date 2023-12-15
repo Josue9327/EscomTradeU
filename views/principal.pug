@@ -6,9 +6,21 @@ block content
                 input.input-busqueda(type="search" placeholder="Search..." aria-label="Search")
                 input.boton-busqueda(type="submit" value="Buscar")
     .contenedor
-            .recuadro.recuadro-delgado
-                h3 Menú
-                p Contenido del recuadro delgado.
-            .recuadro.recuadro-grande
-                h2 Título
-                p Tengo sueño :c
+            .recuadro-principal.recuadro-delgado-principal
+                h3 Perfiles Visitados
+                each recent_profile in recent_profiles
+                    a(href='/')
+                        .post-container#recent_visited
+                            .author-info
+                                img.author-photo(src='/imagen/' + recent_profile.profilePhoto, alt="Foto del autor")
+                                .author-name #{recent_profile.profilename}
+            .recuadro-principal.recuadro-grande-principal
+                each post in posts
+                    .post-container
+                        .author-info
+                            img.author-photo(src='/imagen/' + post.authorPhoto, alt="Foto del autor")
+                            .author-name #{post.author}
+                        .post-description #{post.description}
+                        .post-content
+                            if post.image
+                                img.post-image(src='/img_product/' + post.image, alt="Imagen de la publicación")    

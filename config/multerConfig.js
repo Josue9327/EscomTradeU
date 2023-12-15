@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         const userId = req.body.credential_number;
-        const fileExtension = path.extname(file.originalname);
+        const fileExtension = path.extname('png');
         cb(null, userId + fileExtension);
     }
 });

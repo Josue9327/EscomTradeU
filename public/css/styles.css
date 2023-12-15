@@ -89,7 +89,7 @@ body {
     background-size: cover; /* Esto hace que el gradiente cubra todo el espacio disponible */            
 }
 .main-content {
-    margin-top: 5%;
+    margin-top: 1%;
     flex: 1; /* Hace que el contenido principal ocupe el espacio disponible */
 }
 
@@ -168,7 +168,7 @@ input:focus {
   }
   #neubar a:hover {
     font-size: 25px;
-    color: red;
+    color: black;
     padding-left:12px;
     padding-right:12px;
   }
@@ -176,8 +176,18 @@ input:focus {
     background : #545454
   }
   a.navbar-brand {
-    color: #454545
+    color: #454545;
+    align-items: center;
+    margin: 2px;
   }
+  a.navbar-brand img{
+    color: #454545;
+    align-items: center;
+    margin-left: 25%;
+  }
+#menuImage:hover{
+    border: solid 2px black;
+}
   /* Estilo para el combobox */
 select.custom-combobox {
     font-size: 13px;
@@ -201,7 +211,7 @@ select.custom-combobox:hover {
     color: black;
 }
 .formcontenedor {
-    margin-top: 1rem;
+    margin-top: 0;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -229,7 +239,11 @@ select.custom-combobox:hover {
     background-color: black;
     width: 30%;
 }
-
+.boton-busqueda:hover{
+    background-color: white;
+    padding-top: 3px;
+    color: #000000;
+}
 
 /* Cambia la apariencia del combobox cuando está enfocado */
 select.custom-combobox:focus {
@@ -271,7 +285,7 @@ select.custom-combobox:focus {
     text-align: center;
 }
 .menulateral p{
-    background-color: #3a3279; /* Color de fondo de cada elemento de la lista */
+    background-color: black; /* Color de fondo de cada elemento de la lista */
     border-radius: 10px; /* Esquinas redondeadas */
     padding: 10px; /* Espaciado interno para cada elemento de la lista */
     margin-bottom: 10px; /* Espacio entre los elementos de la lista */
@@ -304,7 +318,7 @@ button.btn-primary:hover {
 }
 .footer {
     margin-top: 5%;
-    background-color: #333;
+    background-color: #000000;
     color: white;
     padding: 20px 0;
 }
@@ -341,4 +355,88 @@ button.btn-primary:hover {
 .copy-right p {
     margin: 0;
     font-size: 14px;
+}
+.recuadro-principal {
+    background-color: #EAD7D7; /* Fondo blanco para los recuadros */
+    margin: 20px; /* Margen alrededor de los recuadros */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    padding: 1%;
+}
+
+.recuadro-grande-principal {
+    min-height: 75%;
+    width: 75%; /* Ancho del recuadro grande */
+}
+
+.recuadro-delgado-principal {
+    height: auto;
+    width: 25%; /* Ancho del recuadro delgado */
+    color: #000000;
+}
+.recuadro-delgado-principal a{
+    text-decoration: none;
+}
+.recuadro-delgado-principal a:visited{
+    color: #000000;
+}
+.post-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.author-photo {
+    width: 50px; /* o el tamaño que prefieras */
+    height: 50px; /* igual al ancho para mantener la proporción */
+    border-radius: 50%; /* para hacerla circular */
+    object-fit: cover; /* asegura que la imagen cubra completamente el área sin distorsionarse */
+    margin-right: 10px;
+}
+
+.author-name {
+    font-weight: bold;
+}
+
+.post-content {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    /* Asegúrate de que el contenedor tenga un tamaño definido o sea suficientemente grande */
+    min-height: 200px; /* Ejemplo de altura mínima, ajusta según tus necesidades */
+}
+
+.post-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.post-description {
+    text-align: justify;
+}
+.boton-menu-lateral{
+    font-size: 15px;
+    flex-grow: 1; /* Hace que solo el input crezca */
+    background-color: black;
+    color: white;
+}
+.boton-menu-lateral:hover{
+    background-color: white;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    color: #000000;
+}
+.post-container#recent_visited:hover{
+    background-color: red;
+    color: white;
 }
