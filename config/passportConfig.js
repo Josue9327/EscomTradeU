@@ -44,7 +44,7 @@ passport.deserializeUser(function(id, done) {
     pool.getConnection((err, connection) => {
         if (err) { return done(err); }
         // Seleccionar solo los campos necesarios para la sesión
-        connection.query('SELECT id, user_name, user_lastname FROM users WHERE id = ?', [id], (error, results) => {
+        connection.query('SELECT id, user_name, user_lastname, user_credential_number FROM users WHERE id = ?', [id], (error, results) => {
             connection.release();
             if (error) { return done(error); }
             done(null, results[0]); // Asegúrate de que esto no incluye información sensible

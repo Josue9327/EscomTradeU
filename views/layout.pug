@@ -26,6 +26,8 @@ html(lang="es")
                         li.nav-item
                                 a.nav-link.mx-2(href='/principal' class=activePage === 'principal' ? 'active' : '') Pagina principal                       
                         li.nav-item
+                                img(src=img_route, height='120')
+                        li.nav-item
                                 a.nav-link.mx-2(href='/logout' class=activePage === 'login' ? 'active' : '') Cerrar Sesion
                     else
                         li.nav-item
