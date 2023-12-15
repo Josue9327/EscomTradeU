@@ -82,12 +82,18 @@ body {
 
 
 .login {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    margin: -150px 0 0 -150px;
-    width: 300px;
-    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    text-align: center; /* Alinea el texto de los elementos internos */
+}
+form {
+    margin: auto; /* Centra el formulario horizontalmente */
+    width: 25rem; /* Ancho fijo para el formulario */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra opcional para resaltar el formulario */
 }
 
 .login h1 {
@@ -96,6 +102,7 @@ body {
     letter-spacing: 1px;
     text-align: center;
 }
+
 .input{
     font-size: 13px;
 }
