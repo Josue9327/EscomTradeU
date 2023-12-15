@@ -1,16 +1,10 @@
 extends layout
 
 block content
-    if isAuthenticated
-        .formcontenedor
+    .formcontenedor
             form.formulario-busqueda
                 input.input-busqueda(type="search" placeholder="Search..." aria-label="Search")
                 input.boton-busqueda(type="submit" value="Buscar")
     .contenedor
-            .recuadro.recuadro-delgado
-                h3 Menú
-                p Contenido del recuadro delgado.
-            .recuadro.recuadro-grande
-                h2 Título
-                p Este es un ejemplo de un recuadro blanco sobre un fondo de color.
+        h1 Hola
                     
