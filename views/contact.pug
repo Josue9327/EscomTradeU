@@ -1,9 +1,18 @@
 extends layout
 block content
-        .contenedor
-                .recuadro.recuadro-delgado
-                        h3 Menú
-                        p Contenido del recuadro delgado.
-                .recuadro.recuadro-grande
-                        h2 Título
-                        p Este es un ejemplo de un recuadro blanco sobre un fondo de color.
+        .recuadro
+                .container.mt-5
+                        .row
+                                .col-md-6
+                                h2 Contáctanos
+                                form#contactForm
+                                        .mb-3
+                                        label(for="name") Nombre
+                                        input#name.form-control(type="text", placeholder="Tu nombre")
+                                        .mb-3
+                                        label(for="email") Email
+                                        input#email.form-control(type="email", placeholder="Tu email")
+                                        .mb-3
+                                        label(for="message") Mensaje
+                                        textarea#message.form-control(rows="3")
+                                        button.btn.btn-primary(type="submit") Enviar Mensaje

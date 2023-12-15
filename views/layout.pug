@@ -10,7 +10,7 @@ html(lang="es")
         if isAuthenticated
             script(src="/socket.io/socket.io.js")
             script(src="js/chat.js")
-            script(src="js/style.js")
+            script(src="js/main.js")
     body
         nav.navbar.navbar-expand-sm.navbar-light#neubar
             .container-fluid
@@ -26,20 +26,43 @@ html(lang="es")
                                 a.nav-link.mx-2(href='/principal' class=activePage === 'principal' ? 'active' : '') Pagina principal                       
                         li.nav-item
                                 img#menuImage(src='/imagen/' + img_route alt='Imagen de perfil', height='120', style='border-radius: 50%;cursor: pointer;')
-                                div#menuLateral(style='display: none;')
-                                    ul
-                                        li Opción 1
-                                        li Opción 2
-                                        li Opción 3
+                                
                     else
                         li.nav-item
                             a.nav-link.mx-2(href='/login' class=activePage === 'login' ? 'active' : '') Iniciar Sesion
                         li.nav-item
                             a.nav-link.mx-2(href='/signup' class=activePage === 'Signup' ? 'active' : '') Crear una cuenta
-    
+        div.menulateral#menuLateral(style='display: none;')
+            ul
+                p Perfil
+                p Opción 2
+                p Opción 3                    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> 
-        
-        block content
+        .main-content
+            block content
+        footer.footer
+            .container
+                .row
+                    .col-md-4.footer-section
+                        h5 Acerca de
+                        p Información sobre la empresa, misión, visión, etc.
+
+                    .col-md-4.footer-section
+                        h5 Contacto
+                        p Dirección: 123 Calle Principal, Ciudad
+                        p Teléfono: +123 456 7890
+                        p Email: contacto@ejemplo.com
+
+                    .col-md-4.footer-section
+                        h5 Síguenos
+                        a(href='#') Facebook
+                        br
+                        a(href='#') Twitter
+                        br
+                        a(href='#') Instagram
+
+                .row.copy-right
+                    p &copy; 2023 Nombre de la Empresa. Todos los derechos reservados.
     
         

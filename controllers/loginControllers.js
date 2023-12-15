@@ -34,7 +34,7 @@ const signup = async (req, res) => {
                             if (err) {
                                 res.status(500).send('Error al iniciar sesión');
                             } else {
-                                res.redirect('/ruta-privada'); // Redirigir al usuario a una parte segura del sitio
+                                res.redirect('/principal'); // Redirigir al usuario a una parte segura del sitio
                             }
                         });
                     }

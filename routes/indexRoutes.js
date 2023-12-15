@@ -6,14 +6,31 @@ const __dirname = (process.platform === "win32")
         : path.dirname(new URL(import.meta.url).pathname);
 const router = express.Router();
 router.get('/', (req, res) => {
-    res.render("index", {title: "hola"});
+    var imgname;
+    // Comprobar si el usuario está en sesión
+    if (req.user) {
+        imgname = req.user.user_credential_number + '.png';
+    } else {
+        // Define un valor predeterminado o maneja el caso de no sesión
+        imgname = 'default.png'; // O cualquier imagen por defecto que tengas
+    }
+    res.render("index", { activePage: 'home', img_route: imgname  });
 });
 router.get('/principal', ensureAuthenticated, (req, res) => {
     const imgname = req.user.user_credential_number + '.png';
     res.render("principal", { activePage: 'principal', img_route: imgname });
 });
 router.get('/contact', (req, res) => {
-    res.render("contact", { activePage: 'contact' });
+    var imgname;
+    // Comprobar si el usuario está en sesión
+    if (req.user) {
+        imgname = req.user.user_credential_number + '.png';
+    } else {
+        // Define un valor predeterminado o maneja el caso de no sesión
+        imgname = 'default.png'; // O cualquier imagen por defecto que tengas
+    }
+    
+    res.render("contact", { activePage: 'contact', img_route: imgname  });
     
 });
 router.get('/imagen/:nombreImagen', (req, res) => {

@@ -66,11 +66,20 @@
 html {
     width: 100%;
     height: 100%;
+    margin: 0;
     overflow: auto;
+    padding: 0;
 }
-
+.content {
+    flex: 1;
+    /* Asegúrate de que el contenido principal ocupe el espacio disponible */
+}
 body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
     width: 100%;
+    min-height: 100vh;
     height: 100%;
     font-family: 'Open Sans', sans-serif;
     background: linear-gradient(135deg, #670d10 0%, #092756 100%), 
@@ -79,7 +88,10 @@ body {
     background-attachment: fixed; /* Esto puede ayudar a que el gradiente se mantenga fijo al hacer scroll */
     background-size: cover; /* Esto hace que el gradiente cubra todo el espacio disponible */            
 }
-
+.main-content {
+    margin-top: 5%;
+    flex: 1; /* Hace que el contenido principal ocupe el espacio disponible */
+}
 
 .login {
     display: flex;
@@ -234,10 +246,11 @@ select.custom-combobox:focus {
 .recuadro {
     background-color: #EAD7D7; /* Fondo blanco para los recuadros */
     margin: 20px; /* Margen alrededor de los recuadros */
-    padding: 20px; /* Espaciado interno */
+    padding-top: 1px; /* Espaciado interno */
+    padding-bottom: 5%; /* Espaciado interno */
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
-    height: 100%;
+    height: auto;
 }
 
 .recuadro-grande {
@@ -247,30 +260,85 @@ select.custom-combobox:focus {
 .recuadro-delgado {
     width: 25%; /* Ancho del recuadro delgado */
 }
-#menuLateral {
-    height: 100%; /* Altura completa de la ventana */
-    width: 0; /* Ancho inicial, se cambiará con JavaScript */
-    position: fixed; /* Posicionamiento fijo */
-    z-index: 1; /* Asegura que esté sobre otros elementos */
-    top: 0; /* Desde la parte superior de la ventana */
-    left: 0; /* Alineado a la izquierda */
-    background-color: #111; /* Color de fondo */
-    overflow-x: hidden; /* Oculta el contenido desbordado */
-    transition: 0.5s; /* Transición suave */
-    padding-top: 60px; /* Espaciado superior */
+.menulateral{
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: auto;
+    color: white;
 }
-#menuLateral ul {
-    list-style: none; /* Sin estilos de lista */
-    padding: 0;
+.menulateral ul{
+    text-align: center;
 }
-#menuLateral ul li {
-    padding: 8px 8px 8px 32px;
+.menulateral p{
+    background-color: #3a3279; /* Color de fondo de cada elemento de la lista */
+    border-radius: 10px; /* Esquinas redondeadas */
+    padding: 10px; /* Espaciado interno para cada elemento de la lista */
+    margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+    /* Otras propiedades de estilo que desees agregar */
+}
+h2 {
+    color: #007bff;
+}
+
+form#contactForm {
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    border-radius: 4px;
+}
+
+button.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+.footer {
+    margin-top: 5%;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer-section h5 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section a {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.5;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
 }
-#menuLateral ul li:hover {
-    color: #f1f1f1;
+
+.footer-section a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.copy-right {
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.copy-right p {
+    margin: 0;
+    font-size: 14px;
 }
