@@ -89,4 +89,17 @@ router.get('/img_product/:nombreImagen', (req, res) => {
         }
     });
 });
+router.get('/perfil', (req, res) => {
+    var imgname;
+    // Comprobar si el usuario está en sesión
+    if (req.user) {
+        imgname = req.user.user_credential_number + '.png';
+    } else {
+        // Define un valor predeterminado o maneja el caso de no sesión
+        imgname = 'default.png'; // O cualquier imagen por defecto que tengas
+    }
+    
+    res.render("perfil", { activePage: 'perfil', img_route: imgname  });
+    
+});
 export default router;

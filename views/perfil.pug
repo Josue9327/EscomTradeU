@@ -1,0 +1,20 @@
+extends layout
+block content
+  body(style="background-color: white; color: black;")
+    .user-profile
+      h2 Perfil de usuario
+      .user-info
+        img(src="img/user_img_default.jpg", alt="Avatar del Comprador", style="max-width: 100px; border-radius: 50%;")
+        h3 Nombre de usuario: Comprador123
+        p Correo institucional: comprador@example.com
+        p Estatus: Activo
+        p Productos comprados recientemente:
+          ul
+            li Producto A
+            li Producto B
+            li Producto C
+        p Productos vendidos:
+          ul
+            li Producto X
+            li Producto Y
+            li Producto Z
