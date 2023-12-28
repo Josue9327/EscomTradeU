@@ -23,6 +23,7 @@ router.get('/perfil', ensureAuthenticated,(req, res) => {
     
 });
 router.get('/buscar', ensureAuthenticated,(req, res) => {
+    const error_msg = req.flash('error'); // Obtiene el mensaje de error
     var imgname;
     // Comprobar si el usuario está en sesión
     if (req.user) {
@@ -32,7 +33,7 @@ router.get('/buscar', ensureAuthenticated,(req, res) => {
         imgname = 'default.png'; // O cualquier imagen por defecto que tengas
     }
     
-    res.render("buscador", { activePage: 'buscar', img_route: imgname  });
+    res.render("buscador", { activePage: 'buscar', img_route: imgname, error_msg});
     
 });
 router.get('/perfil/:userId',(req, res) => {
@@ -46,13 +47,19 @@ router.get('/perfil/:userId',(req, res) => {
         imgname = 'default.png'; // O cualquier imagen por defecto que tengas
     }
     pool.query(
-        'SELECT user_name, user_lastname, user_gender, user_credential_number FROM users WHERE id = ?', 
+        'SELECT user_name, user_lastname, user_gender, user_credential_number FROM users WHERE user_credential_number = ?', 
         [perfilId],
         (error, results) => {
             if (error) {
                 return res.status(500).json({ error });
             }
-            res.render("profile", { activePage: 'buscar', img_route: imgname  });
+            if(results.length > 0){ 
+                res.render("profile", { activePage: 'perfil', img_route: imgname, results: results[0]});
+            }else{
+                req.flash('error', 'Usuario no encontrado');
+                res.redirect('/buscar');
+            }
+            
         }
     );
 

@@ -1,5 +1,6 @@
 import pool from '../config/databaseConfig.js';
 const search = async (req, res) => {
+    const error_msg = req.flash('error'); // Obtiene el mensaje de error
     var imgname;
     // Comprobar si el usuario está en sesión
     if (req.user) {
@@ -18,7 +19,7 @@ const search = async (req, res) => {
             if (error) {
                 return res.status(500).json({ error });
             }
-            res.render("buscador", { activePage: 'buscar', img_route: imgname, results });
+            res.render("buscador", { activePage: 'buscar', img_route: imgname, results, error_msg });
         }
     );
 };

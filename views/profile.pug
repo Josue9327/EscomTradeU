@@ -1,2 +1,19 @@
 extends layout
 block content
+    .recuadro
+      .center-div
+        .profile
+                img(src='/imagen/' + results.user_credential_number + '.png', style="max-width: 100px; border-radius: 50%;")
+                h3= results.user_name + results.user_lastname
+                p Correo institucional: comprador@example.com
+                p Estatus: Activo
+                p Productos comprados recientemente:
+                  ul
+                    li Producto A
+                    li Producto B
+                    li Producto C
+                p Productos vendidos:
+                  ul
+                    li Producto X
+                    li Producto Y
+                    li Producto Z
