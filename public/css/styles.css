@@ -222,7 +222,7 @@ select.custom-combobox:hover {
     gap: 10px;
     padding: 20px;
     background-color: linear-gradient(to bottom, #670d10, #8c3d62);
-    border: 1px solid #670d10;
+
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 50%;
@@ -380,6 +380,10 @@ button.btn-primary:hover {
 .recuadro-delgado-principal a:visited{
     color: #000000;
 }
+.recuadro-grande-principal#buscador{
+    width: 75%;
+    margin-left:12%;
+}
 .post-container {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -437,12 +441,17 @@ button.btn-primary:hover {
     color: #000000;
 }
 .post-container#recent_visited:hover{
-    background-color: red;
+    background-color: black;
     color: white;
 }
 .profile {
+    margin: 0;
+}
+
+.center-div {
+    padding: 10px;
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    background-color: #bbb;
-    }
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100vh; /* Utilizar el alto de la ventana del navegador */
+  }

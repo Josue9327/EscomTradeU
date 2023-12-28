@@ -3,9 +3,9 @@ html(lang="es")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title= title
-        link(rel="stylesheet", href="css/styles.css")
-        link(rel="icon", href="img/logo.ico")
+        title ESCOMTradeU
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="icon", href="/img/logo.ico")
         link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous")
         if isAuthenticated
             script(src="/socket.io/socket.io.js")
@@ -17,25 +17,27 @@ html(lang="es")
                 a.navbar-brand(href='/principal')
                     img(src='img/logo3.png', height='120')
                     h1 ESCOMTRADEU
-                ul.navbar-nav.ms-auto
-                    li.nav-item
-                        a.nav-link.mx-2(href='/' class=activePage === 'Home' ? 'active' : '') Home
-                    li.nav-item
-                        a.nav-link.mx-2(href='/contact' class=activePage === 'contact' ? 'active' : '') Contact
-                    if isAuthenticated
+                ul.navbar-nav.ms-auto    
+                    if isAuthenticated               
                         li.nav-item
-                                a.nav-link.mx-2(href='/principal' class=activePage === 'principal' ? 'active' : '') Pagina principal                       
+                            a.nav-link.mx-2(href='/principal' class=activePage === 'principal' ? 'active' : '') Pagina principal           
                         li.nav-item
-                                img#menuImage(src='/imagen/' + img_route alt='Imagen de perfil', height='120', style='border-radius: 50%;cursor: pointer;')
-                                
+                            a.nav-link.mx-2(href='/buscar' class=activePage === 'buscar' ? 'active' : '') Buscar perfiles 
+                        li.nav-item
+                            a.nav-link.mx-2(href='/perfil' class=activePage === 'perfil' ? 'active' : '') Perfil 
                     else
                         li.nav-item
                             a.nav-link.mx-2(href='/login' class=activePage === 'login' ? 'active' : '') Iniciar Sesion
                         li.nav-item
                             a.nav-link.mx-2(href='/signup' class=activePage === 'Signup' ? 'active' : '') Crear una cuenta
+                    li.nav-item
+                        a.nav-link.mx-2(href='/contact' class=activePage === 'contact' ? 'active' : '') Contact
+                    if isAuthenticated
+                        li.nav-item
+                            img#menuImage(src='/imagen/' + img_route alt='Imagen de perfil', height='120', style='border-radius: 50%;cursor: pointer;')               
         div.menulateral#menuLateral(style='display: none;')
             ul
-                form.formulario-busqueda
+                form.formulario-busqueda(method="get", action="/Perfil")
                     input.boton-menu-lateral(type="submit" value="Perfil")
                 form.formulario-busqueda
                     input.boton-menu-lateral(type="submit" value="Buscar")

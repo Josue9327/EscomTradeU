@@ -1,0 +1,14 @@
+extends layout
+block content     
+    .contenedor
+            .recuadro-principal.recuadro-grande-principal#buscador
+                .formcontenedor
+                    form.formulario-busqueda(method="post", action="/buscar")
+                        input.input-busqueda(type="search" name="term" placeholder="Buscar..." aria-label="Search")
+                        input.boton-busqueda(type="submit" value="Buscar")
+                if results        
+                    each result in results
+                        .post-container#recent_visited
+                                .author-info
+                                    img.author-photo(src='/imagen/' + result.user_credential_number + '.png', alt="Foto del autor")
+                                    .author-name #{result.user_name + ' ' + result.user_lastname}

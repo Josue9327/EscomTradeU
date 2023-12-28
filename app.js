@@ -55,7 +55,7 @@ app.use((req, res, next) => {
 });
 //Rutas
 app.use('/',indexRoutes);
-app.use('/users',userRoutes);
+app.use('/',userRoutes);
 app.use('/',loginRoutes);
 app.get('/numero-sesiones', (req, res) => {
     const sessionStore = req.sessionStore;
