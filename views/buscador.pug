@@ -11,7 +11,7 @@ block content
                         a(href="/perfil/" + result.user_credential_number)
                             .post-container#recent_visited
                                     .author-info
-                                        img.author-photo(src='/imagen/' + result.user_credential_number + '.png', alt="Foto del autor")
+                                        img.author-photo(src='/imagen/' + result.user_credential_number + '.jpg', alt="Foto del autor")
                                         .author-name #{result.user_name + ' ' + result.user_lastname}
                 if error_msg.length > 0
                     .error

@@ -76,16 +76,6 @@ const io = getIO();
 io.use(sharedsession(expressSession, {
     autoSave: true
 }));
-io.on('connection', (socket) => {
-    console.log("Cliente conectado al socket");
-    
-    socket.on('disconnect', () => {
-        console.log("Cliente desconectado");
-    });
-});
-io.on('error', (error) => {
-    console.error('Error en la inicialización de Socket.IO:', error);
-});
 server.listen(PORT, () => {
     //const algo = path.join(__dirname, '/private/img_profile');
     console.log("Jalando");

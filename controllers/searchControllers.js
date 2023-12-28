@@ -4,7 +4,7 @@ const search = async (req, res) => {
     var imgname;
     // Comprobar si el usuario está en sesión
     if (req.user) {
-        imgname = req.user.user_credential_number + '.png';
+        imgname = req.user.user_credential_number + '.jpg';
     } else {
         // Define un valor predeterminado o maneja el caso de no sesión
         imgname = 'default.png'; // O cualquier imagen por defecto que tengas

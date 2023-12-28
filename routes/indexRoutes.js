@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     var imgname;
     // Comprobar si el usuario está en sesión
     if (req.user) {
-        imgname = req.user.user_credential_number + '.png';
+        imgname = req.user.user_credential_number + '.jpg';
     } else {
         // Define un valor predeterminado o maneja el caso de no sesión
         imgname = 'default.png'; // O cualquier imagen por defecto que tengas
@@ -17,23 +17,23 @@ router.get('/', (req, res) => {
     res.render("index", { activePage: 'home', img_route: imgname  });
 });
 router.get('/principal', ensureAuthenticated, (req, res) => {
-    const imgname = req.user.user_credential_number + '.png';
+    const imgname = req.user.user_credential_number + '.jpg';
     const posts = [
         {
             author: "Josue",
-            authorPhoto: "2023630231.png",
+            authorPhoto: "2023630231.jpg",
             description: "Juguito pal calor",
             image: "valle.png"
         },
         {
             author: "Autor 2",
-            authorPhoto: "2023630231.png",
+            authorPhoto: "2023630231.jpg",
             description: "Descripción de la publicación 2",
             image: "mk.png"
         },
         {
             author: "Charly",
-            authorPhoto: "2022.png",
+            authorPhoto: "2022.jpg",
             description: "Descripción de la publicación 2",
             image: "mk.png"
         },
@@ -41,7 +41,7 @@ router.get('/principal', ensureAuthenticated, (req, res) => {
     const recent_profiles = [
         {
             profilename: "Josue",
-            profilePhoto: "2023630231.png",
+            profilePhoto: "2023630231.jpg",
         },
         {
             profilename: "Charly",
@@ -58,7 +58,7 @@ router.get('/contact', (req, res) => {
     var imgname;
     // Comprobar si el usuario está en sesión
     if (req.user) {
-        imgname = req.user.user_credential_number + '.png';
+        imgname = req.user.user_credential_number + '.jpg';
     } else {
         // Define un valor predeterminado o maneja el caso de no sesión
         imgname = 'default.png'; // O cualquier imagen por defecto que tengas

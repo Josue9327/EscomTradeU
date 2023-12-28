@@ -1,7 +1,7 @@
 import express from 'express';
 import loginControllers from '../controllers/loginControllers.js';
 import passport  from '../config/passportConfig.js';
-import upload from '../config/multerConfig.js';
+import { upload } from '../config/multerConfig.js';
 const router = express.Router();
 
 router.get('/login', (req, res) => {
