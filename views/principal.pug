@@ -1,38 +1,5 @@
 extends layout
-block content
-    .contenedor
-            .recuadro-principal.recuadro-delgado-principal
-                h3 Menú
-                    a(href='/')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/productos.png', alt="Foto del autor")
-                                .author-name Mis productos
-                    a(href='/')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/ventas.png', alt="Foto del autor")
-                                .author-name Mis Ventas
-                    a(href='/')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/chat.png', alt="Foto del autor")
-                                .author-name Mensajes
-                    a(href='/')    
-                        .post-container#menu
-                            .author-info     
-                                img.author-photo#icono(src='img/config.png', alt="chat")                                                                          
-                                .author-name Configuracion de cuenta
-                    a(href='/')    
-                        .post-container#menu
-                            .author-info     
-                                img.author-photo#icono(src='img/config.png', alt="chat")                                                                          
-                                .author-name Configuracion de cuenta                                
-                    a(href='/logout')    
-                        .post-container#menu
-                            .author-info     
-                                img.author-photo#icono(src='img/logout.png', alt="chat")                                                                          
-                                .author-name Cerrar sesion                              
+block content        
             .recuadro-principal.recuadro-grande-principal
                 .post-container#New_post
                     form.formularioPublicar(action="/publicar" method="post" enctype="multipart/form-data")
@@ -47,13 +14,15 @@ block content
                             input#publicar(type="submit" value="Publicar")               
                 each post in posts
                     .post-container
-                        .author-info
+                        a.author-info
                             img.author-photo(src='/imagen/' + post.post_author + '.jpg', alt="Foto del autor")
-                            .author-name #{post.autor + " " + post.autor_lastname}
+                            .post-info
+                                .author-name #{post.autor + " " + post.autor_lastname}
+                                .post-date #{post.post_date}
                         .post-description #{post.post_description}
-                        .post-content
-                            if post.post_img
-                                img.post-image(src='/img_posts/' + post.post_img, alt="Imagen de la publicación")
+                        if post.post_img != 'NULL'
+                            .post-content
+                                    img.post-image(src='/img_posts/' + post.post_img, alt="Imagen de la publicación", )
             .recuadro-principal.recuadro-delgado-principal#menu
                 h3 Perfiles Visitados
                 each recent_profile in recent_profiles

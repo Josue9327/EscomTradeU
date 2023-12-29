@@ -41,6 +41,6 @@ router.get('/logout', (req, res, next) => {
     });
 });
 
-router.post('/signup', uploadProfile.single('imageUpload'), loginControllers.signup);
+router.post('/signup', uploadProfile.single('file'), loginControllers.signup);
 // Exportar el router
 export default router;

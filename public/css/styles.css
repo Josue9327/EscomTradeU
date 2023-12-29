@@ -254,6 +254,9 @@ select.custom-combobox:focus {
 .contenedor {
     display: flex; /* Usa Flexbox dentro del contenedor */
     height: 100%;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 2%;
 }
 
 
@@ -265,6 +268,7 @@ select.custom-combobox:focus {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
     height: auto;
+    width: 100%;
 }
 
 .recuadro-grande {
@@ -374,7 +378,7 @@ button.btn-primary:hover {
     height: auto;
     width: 25%; /* Ancho del recuadro delgado */
     color: #000000;
-    max-height: 45%;
+    max-height: 50rem;
 }
 .recuadro-delgado-principal a{
     text-decoration: none;
@@ -383,8 +387,7 @@ button.btn-primary:hover {
     color: #000000;
 }
 .recuadro-grande-principal#buscador{
-    width: 50%;
-    margin-left:25%;
+    width: 100%;
 }
 .post-container {
     border: 1px solid #ddd;
@@ -400,7 +403,12 @@ button.btn-primary:hover {
     align-items: center;
     margin-bottom: 1px;
 }
-
+.author-name a:visited{
+    color: black;
+}
+.author-name a{
+    color: black;
+}
 .author-photo {
     width: 50px; /* o el tamaño que prefieras */
     height: 50px; /* igual al ancho para mantener la proporción */
@@ -448,6 +456,7 @@ button.btn-primary:hover {
     background-color: black;
     color: white;
 }
+
 .profile {
     margin: 0;
 }
@@ -468,9 +477,11 @@ button.btn-primary:hover {
 }
 .user-status {
     display: flex;
-    background-color: rgba(45, 0, 97, 0.8); /* Fondo semitransparente para el texto */
+    background-color: rgba(4, 111, 205, 0.8); /* Fondo semitransparente para el texto */
     padding: 4px 8px; /* Espacio alrededor del texto */
     border-radius: 8px; /* Bordes redondeados */
+    justify-content: center;
+    margin: 2%;
     
   }
   
@@ -510,6 +521,12 @@ button.btn-primary:hover {
     flex-direction: row; /* Los elementos se apilan verticalmente */
     align-items: flex-start; /* Alinea los elementos al inicio horizontalmente (a la izquierda) */
 }
+.author-info#buscador{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+    justify-content: center;
+}
 .post-container#New_post{
     display: flex;
     flex-direction: column;
@@ -524,7 +541,7 @@ button.btn-primary:hover {
 }
 .post-container#New_post textarea{
     width: 100%;
-    height: 100%;
+    height: 5rem;
     background-color: #EAD7D7;
     color: #000000;
     resize: none;
@@ -601,3 +618,77 @@ button.btn-primary:hover {
     padding: 15px;
     background-color: #fff;
 }
+.post-info{
+    display: flex;
+    flex-direction: column;
+}
+.recuadro#perfil{
+    display: flex; /* Establece Flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh;
+    width: 100%;
+}
+
+/* Contenedor del perfil */
+.profile-container {
+    width: 95%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 90%;
+}
+
+
+/* Información del usuario */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Imagen de perfil */
+.profile-picture {
+    margin: 0;
+}
+.profile-picture img {
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    border: 4px solid white;
+    /* transform: translateY(-50%); */ /* Comenta o elimina esta línea si no es necesaria */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Detalles del usuario */
+.user-details h1 {
+    margin: 0;
+    color: #333;
+    margin-top: 5%;
+}
+
+.user-details p {
+    margin: 1%;
+    color: #666;
+}
+
+/* Botones de acción */
+#editar_perfil{
+    margin: 5%;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #670d10;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#editar_perfil:hover {
+    background-color: #8c3d62;
+}
+
+/*SELECT users.user_credential_number, users.user_name, users.user_lastname, post.post_description, post.post_date FROM users INNER JOIN post ON users.user_credential_number = post.post_author WHERE users.user_credential_number = ?;

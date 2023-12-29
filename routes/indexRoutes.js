@@ -2,6 +2,10 @@ import express from 'express';
 import ensureAuthenticated from '../controllers/ensureAuthenticated.js';
 import path from 'path';
 import pool from '../config/databaseConfig.js';
+import moment from 'moment';
+import 'moment/locale/es.js'; // Importar localización en español
+import 'moment-timezone';
+moment.locale('es');
 const __dirname = (process.platform === "win32")
         ? path.resolve()
         : path.dirname(new URL(import.meta.url).pathname);
@@ -20,7 +24,7 @@ router.get('/', (req, res) => {
 router.get('/principal', ensureAuthenticated, (req, res) => {
     const imgname = req.user.user_credential_number + '.jpg';
     pool.query(
-        'SELECT post.*, users.user_name AS autor, users.user_lastname AS autor_lastname FROM post INNER JOIN users ON post.post_author = users.user_credential_number;', 
+        'SELECT post.*, users.user_name AS autor, users.user_lastname AS autor_lastname FROM post INNER JOIN users ON post.post_author = users.user_credential_number ORDER BY post.post_date DESC;', 
         (error, results) => {
             const recent_profiles = [
                 {
@@ -39,7 +43,17 @@ router.get('/principal', ensureAuthenticated, (req, res) => {
             if (error) {
                 return res.status(500).json({ error });
             }
-            res.render("principal", { activePage: 'principal', img_route: imgname, posts: results, recent_profiles });
+            // Formatear las fechas de cada post
+            const formattedResults = results.map(post => {
+                // Suponiendo que 'post_date' es tu columna TIMESTAMP
+                const formattedDate = moment(post.post_date).tz('America/Mexico_City').format('LLLL');
+                // Retornar un nuevo objeto con la fecha formateada
+                return {
+                    ...post,
+                    post_date: formattedDate
+                };
+            });
+            res.render("principal", { activePage: 'principal', img_route: imgname, posts: formattedResults, recent_profiles });
         }
     );
 });

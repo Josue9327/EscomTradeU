@@ -11,6 +11,7 @@ router.post('/users', (req, res) => {
 });
 router.get('/perfil', ensureAuthenticated,(req, res) => {
     var imgname;
+    const perfilId = req.user.user_credential_number;
     // Comprobar si el usuario está en sesión
     if (req.user) {
         imgname = req.user.user_credential_number + '.jpg';
@@ -18,8 +19,23 @@ router.get('/perfil', ensureAuthenticated,(req, res) => {
         // Define un valor predeterminado o maneja el caso de no sesión
         imgname = 'default.png'; // O cualquier imagen por defecto que tengas
     }
-    
-    res.render("perfil", { activePage: 'perfil', img_route: imgname  });
+    pool.query(
+        'SELECT user_name, user_lastname,user_state, user_gender, DATE_FORMAT(user_date, \'%d-%m-%Y\') AS fecha_nacimiento, user_credential_number FROM users WHERE user_credential_number = ?', 
+        [perfilId],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            if(results.length > 0){ 
+                console.log(results);
+                res.render("perfil", { activePage: 'perfil', img_route: imgname, perfil:results[0]  });
+            }else{
+                req.flash('error', 'Usuario no encontrado');
+                res.redirect('/buscar');
+            }
+            
+        }
+    );
     
 });
 router.get('/buscar', ensureAuthenticated,(req, res) => {

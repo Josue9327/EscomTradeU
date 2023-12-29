@@ -1,19 +1,23 @@
 extends layout
 block content
-    .recuadro
-      .center-div
-        .profile
-                img(src='/imagen/' + results.user_credential_number + '.jpg', style="max-width: 100px; border-radius: 50%;")
-                h3= results.user_name + results.user_lastname
-                p Correo institucional: comprador@example.com
-                p Estatus: Activo
-                p Productos comprados recientemente:
-                  ul
-                    li Producto A
-                    li Producto B
-                    li Producto C
-                p Productos vendidos:
-                  ul
-                    li Producto X
-                    li Producto Y
-                    li Producto Z
+      .recuadro#perfil
+        .profile-container
+              .user-info
+                  .profile-picture
+                      img(src='/imagen/' + img_route, alt="Imagen de Perfil")
+                  .user-details
+                      h1=perfil.user_name + " " + perfil.user_lastname
+                      .user-status
+                        - var userState = perfil.user_state
+                        div(class=userState == 0 ? 'gray-circle' : userState == 1 ? 'green-circle' : userState == 2 ? 'red-circle' : '')
+                        span #{userState == 0 ? 'Desconectado' : userState == 1 ? 'En línea' : userState == 2 ? 'Ocupado' : ''}
+                      p Numero de boleta
+                      p #{perfil.user_credential_number}
+                      p Fecha de nacimiento
+                      p #{perfil.fecha_nacimiento}
+                      p Género
+                      - var userGender = perfil.user_gender
+                      p #{userGender == 'H' ? 'Hombre' : userGender == 'M' ? 'Mujer' : ''}
+                      // Botones de acción
+                      button#editar_perfil Editar Perfil
+                      button#editar_perfil Ver mis posts

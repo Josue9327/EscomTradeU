@@ -1,0 +1,55 @@
+extends layout
+block content
+    .contenedor
+            .recuadro-principal.recuadro-delgado-principal
+                h3 Menú
+                    a(href='/')
+                        .post-container#menu
+                            .author-info
+                                img.author-photo#icono(src='img/productos.png', alt="Foto del autor")
+                                .author-name Mis productos
+                    a(href='/')
+                        .post-container#menu
+                            .author-info
+                                img.author-photo#icono(src='img/ventas.png', alt="Foto del autor")
+                                .author-name Mis Ventas
+                    a(href='/')
+                        .post-container#menu
+                            .author-info
+                                img.author-photo#icono(src='img/chat.png', alt="Foto del autor")
+                                .author-name Mensajes
+                    a(href='/')    
+                        .post-container#menu
+                            .author-info     
+                                img.author-photo#icono(src='img/config.png', alt="chat")                                                                          
+                                .author-name Configuracion de cuenta
+                    a(href='/')    
+                        .post-container#menu
+                            .author-info     
+                                img.author-photo#icono(src='img/config.png', alt="chat")                                                                          
+                                .author-name Configuracion de cuenta                                
+                    a(href='/logout')    
+                        .post-container#menu
+                            .author-info     
+                                img.author-photo#icono(src='img/logout.png', alt="chat")                                                                          
+                                .author-name Cerrar sesion                              
+            .recuadro-principal.recuadro-grande-principal
+                .post-container#New_post
+                    form.formularioPublicar(action="/publicar" method="post" enctype="multipart/form-data")
+                        .author-info#New_post  
+                            img.author-photo(src='/imagen/' + img_route, alt="Foto del autor")   
+                            textarea(name="postContent", cols="30", rows="10")
+                        .newpost_buttons         
+                            label(for="file-upload" class="custom-file-upload")
+                                i.fa.fa-cloud-upload
+                                | Subir Imagen
+                            input#file-upload(type="file" name="imageUpload" style="display: none;")
+                            input#publicar(type="submit" value="Publicar")               
+            .recuadro-principal.recuadro-delgado-principal#menu
+                h3 Perfiles Visitados
+                each recent_profile in recent_profiles
+                    a(href='/')
+                        .post-container#recent_visited
+                            .author-info
+                                img.author-photo(src='/imagen/' + recent_profile.profilePhoto, alt="Foto del autor")
+                                .author-name #{recent_profile.profilename}

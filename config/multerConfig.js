@@ -28,7 +28,7 @@ const profileStorage = multer.diskStorage({
         cb(null, path.join(__dirname, '/private/img_profile'));
     },
     filename: function (req, file, cb) {
-        const userId = req.user.user_credential_number;
+        const userId = req.body.credential_number;
         const fileExtension = '.jpg'; // Siempre guardar como JPEG
         cb(null, userId + fileExtension);
     }
