@@ -5,20 +5,6 @@ import sharp from 'sharp';
 const __dirname = (process.platform === "win32")
         ? path.resolve()
         : path.dirname(new URL(import.meta.url).pathname);
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, '/private/img_profile'));
-    },
-    filename: function (req, file, cb) {
-        const userId = req.body.credential_number;
-        const fileExtension = '.jpg'; // Siempre guardar como JPEG
-        cb(null, userId + fileExtension);
-    }
-});
-
-const upload = multer({ storage: storage });
-
 // Middleware para convertir la imagen a JPEG antes de guardarla
 function convertToJPEG(req, res, next) {
     if (req.file) {
@@ -36,5 +22,41 @@ function convertToJPEG(req, res, next) {
         next();
     }
 }
+// Configuración para almacenamiento de imágenes de perfil
+const profileStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, '/private/img_profile'));
+    },
+    filename: function (req, file, cb) {
+        const userId = req.user.user_credential_number;
+        const fileExtension = '.jpg'; // Siempre guardar como JPEG
+        cb(null, userId + fileExtension);
+    }
+});
 
-export { upload, convertToJPEG };
+const uploadProfile = multer({ storage: profileStorage });
+
+// Configuración para almacenamiento de otro tipo de imágenes, por ejemplo, imágenes de publicaciones
+const postImageStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        // Guardar en otra carpeta llamada 'img_posts'
+        cb(null, path.join(__dirname, '/private/img_posts'));
+    },
+    filename: function (req, file, cb) {
+        // Podrías usar otro criterio para el nombre del archivo aquí, como una marca de tiempo
+        const userId = req.user.user_credential_number;
+        const timestamp = req.uniqueId;
+        const filename = userId + "_" + timestamp;
+        const fileExtension = '.jpg'; // Mantener la extensión original del archivo
+        cb(null, filename + fileExtension);
+    }
+});
+
+const uploadPostImage = multer({ storage: postImageStorage });
+
+// Exportar ambas configuraciones de Multer
+export { uploadProfile, uploadPostImage, convertToJPEG };
+
+
+
+

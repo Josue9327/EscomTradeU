@@ -2,7 +2,7 @@ import express from 'express';
 import loginControllers from '../controllers/loginControllers.js';
 import passport  from '../config/passportConfig.js';
 import pool from '../config/databaseConfig.js';
-import { upload } from '../config/multerConfig.js';
+import { uploadProfile } from '../config/multerConfig.js';
 const router = express.Router();
 
 router.get('/login', (req, res) => {
@@ -41,6 +41,6 @@ router.get('/logout', (req, res, next) => {
     });
 });
 
-router.post('/signup', upload.single('file'), loginControllers.signup);
+router.post('/signup', uploadProfile.single('imageUpload'), loginControllers.signup);
 // Exportar el router
 export default router;

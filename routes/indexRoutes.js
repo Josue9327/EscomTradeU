@@ -1,6 +1,7 @@
 import express from 'express';
 import ensureAuthenticated from '../controllers/ensureAuthenticated.js';
 import path from 'path';
+import pool from '../config/databaseConfig.js';
 const __dirname = (process.platform === "win32")
         ? path.resolve()
         : path.dirname(new URL(import.meta.url).pathname);
@@ -18,41 +19,29 @@ router.get('/', (req, res) => {
 });
 router.get('/principal', ensureAuthenticated, (req, res) => {
     const imgname = req.user.user_credential_number + '.jpg';
-    const posts = [
-        {
-            author: "Josue",
-            authorPhoto: "2023630231.jpg",
-            description: "Juguito pal calor",
-            image: "valle.png"
-        },
-        {
-            author: "Autor 2",
-            authorPhoto: "2023630231.jpg",
-            description: "Descripción de la publicación 2",
-            image: "mk.png"
-        },
-        {
-            author: "Charly",
-            authorPhoto: "2022.jpg",
-            description: "Descripción de la publicación 2",
-            image: "mk.png"
-        },
-    ];
-    const recent_profiles = [
-        {
-            profilename: "Josue",
-            profilePhoto: "2023630231.jpg",
-        },
-        {
-            profilename: "Charly",
-            profilePhoto: "2022.png",
-        },
-        {
-            profilename: "Emi",
-            profilePhoto: "2022.png",
-        },
-    ];
-    res.render("principal", { activePage: 'principal', img_route: imgname, posts, recent_profiles });
+    pool.query(
+        'SELECT post.*, users.user_name AS autor, users.user_lastname AS autor_lastname FROM post INNER JOIN users ON post.post_author = users.user_credential_number;', 
+        (error, results) => {
+            const recent_profiles = [
+                {
+                    profilename: "Josue",
+                    profilePhoto: "2023630231.jpg",
+                },
+                {
+                    profilename: "Charly",
+                    profilePhoto: "2022.png",
+                },
+                {
+                    profilename: "Emi",
+                    profilePhoto: "2022.png",
+                },
+            ];
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            res.render("principal", { activePage: 'principal', img_route: imgname, posts: results, recent_profiles });
+        }
+    );
 });
 router.get('/contact', (req, res) => {
     var imgname;
@@ -81,6 +70,17 @@ router.get('/imagen/:nombreImagen', (req, res) => {
 router.get('/img_product/:nombreImagen', (req, res) => {
     const nombreImagen = req.params.nombreImagen;
     const rutaImagen = path.join(__dirname, 'private/img_products', nombreImagen);
+
+    res.sendFile(rutaImagen, (err) => {
+        if (err) {
+            // Manejar el error, por ejemplo, si el archivo no existe
+            res.status(404).send('Imagen no encontrada');
+        }
+    });
+});
+router.get('/img_posts/:nombreImagen', (req, res) => {
+    const nombreImagen = req.params.nombreImagen;
+    const rutaImagen = path.join(__dirname, 'private/img_posts', nombreImagen);
 
     res.sendFile(rutaImagen, (err) => {
         if (err) {
