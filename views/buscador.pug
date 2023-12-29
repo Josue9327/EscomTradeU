@@ -13,6 +13,12 @@ block content
                                     .author-info
                                         img.author-photo(src='/imagen/' + result.user_credential_number + '.jpg', alt="Foto del autor")
                                         .author-name #{result.user_name + ' ' + result.user_lastname}
+                                        .author-description #{result.user_credential_number}
+                                        .user-status
+                                            - var userState = result.user_state
+                                            div(class=userState == 0 ? 'gray-circle' : userState == 1 ? 'green-circle' : userState == 2 ? 'red-circle' : '')
+                                            span #{userState == 0 ? 'Desconectado' : userState == 1 ? 'En línea' : userState == 2 ? 'Ocupado' : ''}
+
                 if error_msg.length > 0
                     .error
                         each err in error_msg

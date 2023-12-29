@@ -24,6 +24,15 @@ passport.use(new LocalStrategy(
                         return done(err);
                     }
                     if (result) {
+                        pool.query(
+                            'UPDATE users SET user_state = ? WHERE id = ?;', 
+                            [1, user.id],
+                            (error, results) => {
+                                if (error) {
+                                    return done(error);
+                                }
+                            }
+                        );
                         return done(null, { id: user.id, name: user.user_name});
                     } else {
                         return done(null, false, { message: 'Usuario o contraseña incorrectos' });

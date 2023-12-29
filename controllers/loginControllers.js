@@ -17,8 +17,8 @@ const signup = async (req, res) => {
                 console.error('Error al obtener la conexi:', err);
                 return;
             }
-            connection.query('INSERT INTO users (user_name, user_lastname, user_credential_number, user_password, user_date, user_gender) VALUES (?, ?, ?, ?, ?, ?)',
-                [name, lastname, credential_number, hash, date, gender], (error, results) => {
+            connection.query('INSERT INTO users (user_name, user_lastname, user_credential_number, user_password, user_date, user_gender, user_state) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                [name, lastname, credential_number, hash, date, gender, 1], (error, results) => {
                     if (error) {
                         // Manejo de error al intentar guardar en la base de datos
                         res.status(500).send(error);

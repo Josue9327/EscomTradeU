@@ -268,7 +268,7 @@ select.custom-combobox:focus {
 }
 
 .recuadro-grande {
-    width: 75%; /* Ancho del recuadro grande */
+    width: 50%; /* Ancho del recuadro grande */
 }
 
 .recuadro-delgado {
@@ -367,12 +367,14 @@ button.btn-primary:hover {
 .recuadro-grande-principal {
     min-height: 75%;
     width: 75%; /* Ancho del recuadro grande */
+    height: auto;
 }
 
 .recuadro-delgado-principal {
     height: auto;
     width: 25%; /* Ancho del recuadro delgado */
     color: #000000;
+    max-height: 30%;
 }
 .recuadro-delgado-principal a{
     text-decoration: none;
@@ -381,8 +383,8 @@ button.btn-primary:hover {
     color: #000000;
 }
 .recuadro-grande-principal#buscador{
-    width: 75%;
-    margin-left:12%;
+    width: 50%;
+    margin-left:25%;
 }
 .post-container {
     border: 1px solid #ddd;
@@ -396,7 +398,7 @@ button.btn-primary:hover {
 .author-info {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 1px;
 }
 
 .author-photo {
@@ -454,4 +456,110 @@ button.btn-primary:hover {
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
     height: 100vh; /* Utilizar el alto de la ventana del navegador */
+}
+.author-name{
+    margin-right: 8%;
+}
+.author-description{
+    margin-left: 8%;
+    margin-right: 8%;
+}
+.user-status {
+    display: flex;
+    background-color: rgba(45, 0, 97, 0.8); /* Fondo semitransparente para el texto */
+    padding: 4px 8px; /* Espacio alrededor del texto */
+    border-radius: 8px; /* Bordes redondeados */
+    
   }
+  
+  .green-circle {
+    width: 16px;
+    height: 16px;
+    background-color: green;
+    border-radius: 50%;
+    margin-right: 4px; /* Espacio entre el círculo y el texto */
+  }
+  .red-circle {
+    width: 16px;
+    height: 16px;
+    background-color: red;
+    border-radius: 50%;
+    margin-right: 4px; /* Espacio entre el círculo y el texto */
+  }
+  .gray-circle {
+    width: 16px;
+    height: 16px;
+    background-color: gray;
+    border-radius: 50%;
+    margin-right: 4px; /* Espacio entre el círculo y el texto */
+  }
+  
+  /* Estilos para el texto de estado (puedes personalizarlos según tus necesidades) */
+  span {
+    font-size: 12px;
+    color: white; /* Color del texto */
+  }
+.user-status:hover{
+    border: solid 2px black;
+}
+.author-info#New_post{
+    height: 100%;
+    width: 100%;
+}
+.post-container#New_post{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.post-container#New_post textarea{
+    width: 100%;
+    height: 100%;
+    background-color: #EAD7D7;
+    color: #000000;
+    resize: none;
+}
+.post-container#menu{
+    margin-top: 10px;
+}
+.post-container#menu:hover{
+    background-color: black;
+    color: white;
+}
+.post-container#menu img{
+    background-color: white;
+}
+.author-photo{
+    border: 2px solid white; /* Borde blanco */
+    box-shadow: 0px 0px 10px white; /* Sombra blanca */
+    
+}
+
+.custom-file-upload {
+    background-color: #4a77d4;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 5px; 
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px; 
+    border: none;
+}
+
+.btn-primary {
+    background-color: #4a77d4;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#file-upload {
+    display: none;
+}

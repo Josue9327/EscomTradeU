@@ -36,7 +36,7 @@ router.get('/buscar', ensureAuthenticated,(req, res) => {
     res.render("buscador", { activePage: 'buscar', img_route: imgname, error_msg});
     
 });
-router.get('/perfil/:userId',(req, res) => {
+router.get('/perfil/:userId',ensureAuthenticated, (req, res) => {
     var imgname;
     const perfilId = req.params.userId;
     // Comprobar si el usuario está en sesión
