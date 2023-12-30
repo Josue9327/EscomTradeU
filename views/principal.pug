@@ -1,11 +1,11 @@
-extends layout
-block content        
+extends menulayout
+block content2                         
             .recuadro-principal.recuadro-grande-principal
                 .post-container#New_post
                     form.formularioPublicar(action="/publicar" method="post" enctype="multipart/form-data")
                         .author-info#New_post  
                             img.author-photo(src='/imagen/' + img_route, alt="Foto del autor")   
-                            textarea(name="postContent", cols="30", rows="10")
+                            textarea(name="postContent", cols="30", rows="10", placeholder="Nueva publicacion")
                         .newpost_buttons         
                             label(for="file-upload" class="custom-file-upload")
                                 i.fa.fa-cloud-upload

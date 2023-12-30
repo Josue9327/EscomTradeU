@@ -1,0 +1,14 @@
+extends menulayout
+block content2                         
+            .recuadro-principal.recuadro-grande-principal              
+                each post in posts
+                    .post-container
+                        a.author-info
+                            img.author-photo(src='/imagen/' + post.post_author + '.jpg', alt="Foto del autor")
+                            .post-info
+                                .author-name #{post.autor + " " + post.autor_lastname}
+                                .post-date #{post.post_date}
+                        .post-description #{post.post_description}
+                        if post.post_img != 'NULL'
+                            .post-content
+                                    img.post-image(src='/img_posts/' + post.post_img, alt="Imagen de la publicación", )

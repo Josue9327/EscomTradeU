@@ -1,0 +1,41 @@
+extends layout
+block content
+    .contenedor
+            .recuadro-principal.recuadro-delgado-principal
+                h3 Menú
+                    a(href='/principal')
+                        .post-container#menu
+                            .author-info
+                                img.author-photo#icono(src='img/home.png', alt="Foto del autor")
+                                .author-name Home
+                    a(href='/')
+                        .post-container#menu
+                            .author-info
+                                img.author-photo#icono(src='img/productos.png', alt="Foto del autor")
+                                .author-name Mis productos
+                    a(href='/')
+                        .post-container#menu
+                            .author-info
+                                img.author-photo#icono(src='img/ventas.png', alt="Foto del autor")
+                                .author-name Mis Ventas
+                    a(href='/')
+                        .post-container#menu
+                            .author-info
+                                img.author-photo#icono(src='img/chat.png', alt="Foto del autor")
+                                .author-name Mensajes
+                    a(href='/mispost')    
+                        .post-container#menu
+                            .author-info     
+                                img.author-photo#icono(src='img/mispost.png', alt="chat")                                                                          
+                                .author-name Mis posts
+                    a(href='/')    
+                        .post-container#menu
+                            .author-info     
+                                img.author-photo#icono(src='img/config.png', alt="chat")                                                                          
+                                .author-name Configuracion de cuenta                                
+                    a(href='/logout')    
+                        .post-container#menu
+                            .author-info     
+                                img.author-photo#icono(src='img/logout.png', alt="chat")                                                                          
+                                .author-name Cerrar sesion                 
+            block content2                            

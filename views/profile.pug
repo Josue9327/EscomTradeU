@@ -4,7 +4,7 @@ block content
         .profile-container
               .user-info
                   .profile-picture
-                      img(src='/imagen/' + img_route, alt="Imagen de Perfil")
+                      img(src='/imagen/' + perfil.user_credential_number + '.jpg', alt="Imagen de Perfil")
                   .user-details
                       h1=perfil.user_name + " " + perfil.user_lastname
                       .user-status
@@ -19,5 +19,4 @@ block content
                       - var userGender = perfil.user_gender
                       p #{userGender == 'H' ? 'Hombre' : userGender == 'M' ? 'Mujer' : ''}
                       // Botones de acción
-                      button#editar_perfil Editar Perfil
-                      button#editar_perfil Ver mis posts
+                      button#editar_perfil Mandar mensaje

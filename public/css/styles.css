@@ -254,9 +254,6 @@ select.custom-combobox:focus {
 .contenedor {
     display: flex; /* Usa Flexbox dentro del contenedor */
     height: 100%;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 2%;
 }
 
 
@@ -268,7 +265,6 @@ select.custom-combobox:focus {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
     height: auto;
-    width: 100%;
 }
 
 .recuadro-grande {
@@ -387,7 +383,8 @@ button.btn-primary:hover {
     color: #000000;
 }
 .recuadro-grande-principal#buscador{
-    width: 100%;
+    width: 50%;
+    margin-left:25%;
 }
 .post-container {
     border: 1px solid #ddd;
@@ -456,7 +453,6 @@ button.btn-primary:hover {
     background-color: black;
     color: white;
 }
-
 .profile {
     margin: 0;
 }
@@ -514,18 +510,13 @@ button.btn-primary:hover {
   }
 .user-status:hover{
     border: solid 2px black;
+    background-color: #3762bc;
 }
 .author-info#New_post{
     height: 25%;
     width: 100%;
     flex-direction: row; /* Los elementos se apilan verticalmente */
     align-items: flex-start; /* Alinea los elementos al inicio horizontalmente (a la izquierda) */
-}
-.author-info#buscador{
-    display: flex;
-    align-items: center;
-    margin-bottom: 1px;
-    justify-content: center;
 }
 .post-container#New_post{
     display: flex;
@@ -541,10 +532,12 @@ button.btn-primary:hover {
 }
 .post-container#New_post textarea{
     width: 100%;
-    height: 5rem;
+    height: 10rem;
     background-color: #EAD7D7;
     color: #000000;
     resize: none;
+    font-size: 25px;
+    padding: 10px;
 }
 .post-container#menu{
     margin-top: 10px;
@@ -627,7 +620,8 @@ button.btn-primary:hover {
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
     height: 100vh;
-    width: 100%;
+    width: 50%;
+    margin-left: 25%;
 }
 
 /* Contenedor del perfil */
@@ -690,5 +684,7 @@ button.btn-primary:hover {
 #editar_perfil:hover {
     background-color: #8c3d62;
 }
-
+.perfil-options{
+    display: flex;
+}
 /*SELECT users.user_credential_number, users.user_name, users.user_lastname, post.post_description, post.post_date FROM users INNER JOIN post ON users.user_credential_number = post.post_author WHERE users.user_credential_number = ?;

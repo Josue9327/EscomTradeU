@@ -1,23 +1,26 @@
 extends layout
-block content      
-      .recuadro#perfil
-        .profile-container
-              .user-info
-                  .profile-picture
-                      img(src='/imagen/' + img_route, alt="Imagen de Perfil")
-                  .user-details
-                      h1=perfil.user_name + " " + perfil.user_lastname
-                      .user-status
+block content
+    .recuadro#perfil
+      .profile-container
+            .user-info
+                .profile-picture
+                    img(src='/imagen/' + img_route, alt="Imagen de Perfil")
+                .user-details
+                    h1= perfil.user_name + " " + perfil.user_lastname
+                    .user-status#status-menu
                         - var userState = perfil.user_state
                         div(class=userState == 0 ? 'gray-circle' : userState == 1 ? 'green-circle' : userState == 2 ? 'red-circle' : '')
                         span #{userState == 0 ? 'Desconectado' : userState == 1 ? 'En línea' : userState == 2 ? 'Ocupado' : ''}
-                      p Numero de boleta
-                      p #{perfil.user_credential_number}
-                      p Fecha de nacimiento
-                      p #{perfil.fecha_nacimiento}
-                      p Género
-                      - var userGender = perfil.user_gender
-                      p #{userGender == 'H' ? 'Hombre' : userGender == 'M' ? 'Mujer' : ''}
-                      // Botones de acción
-                      button#editar_perfil Editar Perfil
-                      button#editar_perfil Ver mis posts
+                    p Numero de boleta
+                    p #{perfil.user_credential_number}
+                    p Fecha de nacimiento
+                    p #{perfil.fecha_nacimiento}
+                    p Género
+                    - var userGender = perfil.user_gender
+                    p #{userGender == 'H' ? 'Hombre' : userGender == 'M' ? 'Mujer' : ''}
+                    // Botones de acción
+                    .perfil-options
+                      form.formularioPublicar(action="/mispost" method="get")
+                        button#editar_perfil(type="submit") Editar perfil
+                      form.formularioPublicar(action="/mispost" method="get")
+                        button#editar_perfil(type="submit") Ver mis posts

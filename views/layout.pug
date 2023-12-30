@@ -11,16 +11,15 @@ html(lang="es")
             script(src="/socket.io/socket.io.js")
             script(src="/js/chat.js")
             script(src="/js/main.js")
+            script(src="/js/statusMenu.js")
     body
         nav.navbar.navbar-expand-sm.navbar-light#neubar
             .container-fluid
                 a.navbar-brand(href='/principal')
                     img(src='/img/logo3.png', height='120')
-                    h1 ESCOMTRADEU
+                    h1 ESCOMTRADEUS
                 ul.navbar-nav.ms-auto    
                     if isAuthenticated               
-                        li.nav-item
-                            a.nav-link.mx-2(href='/' class=activePage === 'home' ? 'active' : '') Inicio
                         li.nav-item
                             a.nav-link.mx-2(href='/principal' class=activePage === 'principal' ? 'active' : '') Pagina principal           
                         li.nav-item
@@ -37,49 +36,11 @@ html(lang="es")
                     if isAuthenticated
                         li.nav-item
                             a(href="/perfil")
-                                img#menuImage(src='/imagen/' + img_route alt='Imagen de perfil', height='120', style='border-radius: 50%;cursor: pointer;')               
-                            .user-status
-                                .green-circle
-                                span En línea                      
+                                img#menuImage(src='/imagen/' + img_route alt='Imagen de perfil', height='120', style='border-radius: 50%;cursor: pointer;')                                   
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> 
         .main-content
-            .contenedor
-                if isAuthenticated  
-                    .recuadro-principal.recuadro-delgado-principal
-                        h3 Menú
-                            a(href='/')
-                                .post-container#menu
-                                    .author-info
-                                        img.author-photo#icono(src='img/productos.png', alt="Foto del autor")
-                                        .author-name Mis productos
-                            a(href='/')
-                                .post-container#menu
-                                    .author-info
-                                        img.author-photo#icono(src='img/ventas.png', alt="Foto del autor")
-                                        .author-name Mis Ventas
-                            a(href='/')
-                                .post-container#menu
-                                    .author-info
-                                        img.author-photo#icono(src='img/chat.png', alt="Foto del autor")
-                                        .author-name Mensajes
-                            a(href='/')    
-                                .post-container#menu
-                                    .author-info     
-                                        img.author-photo#icono(src='img/mispost.png', alt="chat")                                                                          
-                                        .author-name Mis posts
-                            a(href='/')    
-                                .post-container#menu
-                                    .author-info     
-                                        img.author-photo#icono(src='img/config.png', alt="chat")                                                                          
-                                        .author-name Configuracion de cuenta                                
-                            a(href='/logout')    
-                                .post-container#menu
-                                    .author-info     
-                                        img.author-photo#icono(src='img/logout.png', alt="chat")                                                                          
-                                        .author-name Cerrar sesion            
-                block content
-            
+            block content
         footer.footer
             .container
                 .row
