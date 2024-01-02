@@ -1,0 +1,31 @@
+extends menulayout
+block content2                         
+            .recuadro-principal.recuadro-grande-principal
+                    h1 Nuevo Producto
+                    .product-container#newProduct
+                            .product-options
+                                form.formularioPublicar#producto_agregar(action="/addproduct" method="post", enctype="multipart/form-data")
+                                    .product-name
+                                        p Nombre:
+                                        input.input(type="text",name="product_name", placeholder="Nombre del producto")
+                                    .product-name
+                                        p Cantidad:
+                                        input.input(type="number",name="product_quantity", placeholder="Cantidad del producto")
+                                    .product-name
+                                        p Precio:
+                                        input.input(type="number",name="product_price", placeholder="Costo del producto")
+                                    .product-name
+                                        p Categoria:
+                                        input.input(type="text",name="product_category", placeholder="Nombre del producto")         
+                                    .product-name
+                                        p descripcion:
+                                        textarea(name="product_description", cols="30", rows="10", placeholder="Descripcion")
+                                    .product-name
+                                    .newpost_buttons
+                                        p Imagen:         
+                                        label(for="file-upload" class="custom-file-upload")
+                                            i.fa.fa-cloud-upload
+                                            | Subir Imagen
+                                        input#file-upload(type="file" name="imageUpload" style="display: none;")
+                                    button.button#producto_agregar(type="submit") Agregar producto                
+                                        

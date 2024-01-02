@@ -54,8 +54,29 @@ const postImageStorage = multer.diskStorage({
 
 const uploadPostImage = multer({ storage: postImageStorage });
 
+//Productos
+
+// Configuración para almacenamiento de otro tipo de imágenes, por ejemplo, imágenes de publicaciones
+const productImageStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        // Guardar en otra carpeta llamada 'img_posts'
+        cb(null, path.join(__dirname, '/private/img_products'));
+    },
+    filename: function (req, file, cb) {
+        // Podrías usar otro criterio para el nombre del archivo aquí, como una marca de tiempo
+        const userId = req.user.user_credential_number;
+        const timestamp = req.uniqueId;
+        const filename = userId + "_" + timestamp;
+        const fileExtension = '.jpg'; // Mantener la extensión original del archivo
+        cb(null, filename + fileExtension);
+    }
+});
+
+const uploadProductImage = multer({ storage: productImageStorage });
+
+
 // Exportar ambas configuraciones de Multer
-export { uploadProfile, uploadPostImage, convertToJPEG };
+export { uploadProfile, uploadProductImage, uploadPostImage, convertToJPEG };
 
 
 

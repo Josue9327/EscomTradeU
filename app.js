@@ -9,6 +9,7 @@ import indexRoutes from './routes/indexRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import loginRoutes from './routes/loginRoutes.js';
 import postRoutes from './routes/postRoutes.js';
+import prodcutsRoutes from './routes/productsRoutes.js';
 import errorController from './controllers/errorControllers.js';
 import flash from "connect-flash";
 import { createServer } from 'http';
@@ -60,6 +61,8 @@ app.use('/',indexRoutes);
 app.use('/',userRoutes);
 app.use('/',loginRoutes);
 app.use('/',postRoutes);
+app.use('/',prodcutsRoutes);
+
 app.get('/numero-sesiones', (req, res) => {
     const sessionStore = req.sessionStore;
     sessionStore.all((error, sessions) => {

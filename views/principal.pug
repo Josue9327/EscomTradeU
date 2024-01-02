@@ -14,7 +14,7 @@ block content2
                             input#publicar(type="submit" value="Publicar")               
                 each post in posts
                     .post-container
-                        a.author-info
+                        a.author-info(href="/perfil/" + post.post_author)
                             img.author-photo(src='/imagen/' + post.post_author + '.jpg', alt="Foto del autor")
                             .post-info
                                 .author-name #{post.autor + " " + post.autor_lastname}

@@ -564,11 +564,11 @@ button.btn-primary:hover {
     background-color: #670d10;
     color: white;
     padding: 10px 20px;
-    margin-top: 2%; 
     cursor: pointer;
     text-align: center;
     border-radius: 5px; 
     border: none;
+    font-size: 1.5rem;
 }
 
 #publicar {
@@ -579,6 +579,7 @@ button.btn-primary:hover {
     border-radius: 5px;
     margin-left: 10%;
     background-color: #670d10;
+    font-size: 1.5rem;
 }
 #publicar:hover{
     border: none;
@@ -675,6 +676,7 @@ button.btn-primary:hover {
 
 /* Botones de acción */
 #editar_perfil{
+    font-size: 1.5rem;
     margin: 5%;
     margin-top: 10px;
     padding: 10px 15px;
@@ -683,7 +685,6 @@ button.btn-primary:hover {
     background-color: #670d10;
     color: white;
     cursor: pointer;
-    font-size: 16px;
 }
 
 #editar_perfil:hover {
@@ -691,5 +692,108 @@ button.btn-primary:hover {
 }
 .perfil-options{
     display: flex;
+}
+/*productos*/
+.product-container {
+    font-size: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.product-photo{
+    width: 10rem;  /* o el ancho deseado */
+    height: 10rem; /* o la altura deseada */
+    max-width: 10rem;
+    height: 10rem;
+    object-fit: contain; 
+    margin: 1rem;
+    align-self: start;
+}
+.product-info{
+    width: auto;
+}
+.product-name{
+    display: flex;
+    justify-content: space-between; /* Asegura un espaciado uniforme */
+    align-items: center;
+    width: 80%; /* Ajustar según sea necesario */
+    margin: 1rem 0; /* Espaciado uniforme */
+}
+.product-name p{
+    margin-right: 0.5rem;
+}
+.product-name input{
+    width: 50;
+    margin-left: 0.5rem;
+    background-color: #EAD7D7;
+    color: #000;
+    font-size: 1rem;
+}
+.product-options{
+    display: flex;
+    justify-items: center;
+}
+.button#editar_perfil{
+    background-color: #0056b3;
+    font-size: 1.5rem;
+}
+.button#editar_perfil:hover{
+    background-color: #092756;
+}
+.button#producto_agregar{
+    margin: 5%;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #670d10;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color: #009619;
+}
+.button#producto_agregar:hover{
+    background-color: #42b103;
+}
+#file-uploadproduct {
+    width: 2px;
+}  
+.newproduct-name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.product-container#newProduct{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.formularioPublicar#producto_agregar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ajustar según sea necesario */
+}
+.formularioPublicar#producto_agregar input{
+    width: auto;
+}
+.formularioPublicar#producto_agregar h1{
+    margin-bottom: 5rem;
+}
+.product-name textarea {
+    flex-grow: 1; /* Permite que los input y textarea ocupen el espacio disponible */
+    margin-left: 0.5rem;
+}
+.formularioPublicar#producto_agregar textarea{
+    width: 100%;
+    height: 10rem;
+    background-color: #EAD7D7;
+    color: #000000;
+    resize: none;
+    font-size: 25px;
+    padding: 10px;
 }
 /*SELECT users.user_credential_number, users.user_name, users.user_lastname, post.post_description, post.post_date FROM users INNER JOIN post ON users.user_credential_number = post.post_author WHERE users.user_credential_number = ?;
