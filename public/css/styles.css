@@ -413,7 +413,12 @@ button.btn-primary:hover {
     object-fit: cover; /* asegura que la imagen cubra completamente el área sin distorsionarse */
     margin-right: 10px;
 }
-
+.author-info#buscador{
+    display: flex;
+    justify-content: space-between; /* Esto separará los elementos igualmente */
+    align-items: center; 
+    text-align: center;
+}
 .author-name {
     font-weight: bold;
 }
