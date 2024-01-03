@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
         // Define un valor predeterminado o maneja el caso de no sesión
         imgname = 'default.png'; // O cualquier imagen por defecto que tengas
     }
-    res.render("index", { activePage: 'home', img_route: imgname  });
+    res.redirect('/principal');
 });
 router.get('/principal', ensureAuthenticated, (req, res) => {
     const imgname = req.user.user_credential_number + '.jpg';

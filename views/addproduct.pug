@@ -1,7 +1,10 @@
 extends menulayout
 block content2                         
-            .recuadro-principal.recuadro-grande-principal
-                    h1 Nuevo Producto
+            .recuadro-principal.recuadro-grande-principal#cargaprincipal
+                    .formhead
+                        h1 Nuevo Producto
+                        form.formularioVolver(action="/productos#cargaprincipal" method="get")
+                            button.button#Volver(type="submit") Volver 
                     .product-container#newProduct
                             .product-options
                                 form.formularioPublicar#producto_agregar(action="/addproduct" method="post", enctype="multipart/form-data")
@@ -21,11 +24,10 @@ block content2
                                         p descripcion:
                                         textarea(name="product_description", cols="30", rows="10", placeholder="Descripcion")
                                     .product-name
-                                    .newpost_buttons
-                                        p Imagen:         
-                                        label(for="file-upload" class="custom-file-upload")
-                                            i.fa.fa-cloud-upload
-                                            | Subir Imagen
-                                        input#file-upload(type="file" name="imageUpload" style="display: none;")
+                                            p Imagen:         
+                                            label(for="file-upload" class="custom-file-upload")
+                                                i.fa.fa-cloud-upload
+                                                | Subir Imagen
+                                            input#file-upload(type="file" name="imageUpload" style="display: none;")
                                     button.button#producto_agregar(type="submit") Agregar producto                
-                                        
+                                      

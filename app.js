@@ -10,6 +10,7 @@ import userRoutes from './routes/userRoutes.js';
 import loginRoutes from './routes/loginRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 import prodcutsRoutes from './routes/productsRoutes.js';
+import messagesRoutes from './routes/messageRoutes.js';
 import errorController from './controllers/errorControllers.js';
 import flash from "connect-flash";
 import { createServer } from 'http';
@@ -40,8 +41,10 @@ app.use(helmet.contentSecurityPolicy({
         scriptSrc: [
             "'self'",
             "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js",
-            "https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"],  
-            
+            "https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js",
+            "https://code.jquery.com/jquery-3.3.1.slim.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
+            "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"],  
         // otras directivas...
     }
 }));
@@ -62,7 +65,7 @@ app.use('/',userRoutes);
 app.use('/',loginRoutes);
 app.use('/',postRoutes);
 app.use('/',prodcutsRoutes);
-
+app.use('/',messagesRoutes);
 app.get('/numero-sesiones', (req, res) => {
     const sessionStore = req.sessionStore;
     sessionStore.all((error, sessions) => {

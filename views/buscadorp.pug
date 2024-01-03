@@ -1,0 +1,74 @@
+extends layout
+block content     
+    .contenedor
+            .recuadro-principal.recuadro-grande-principal#buscadorp
+                .formcontenedor
+                    form.formulario-busqueda(method="post", action="/buscar")
+                        input.input-busqueda(type="search" name="term" placeholder="Buscar..." aria-label="Search")
+                        input.boton-busqueda(type="submit" value="Buscar")
+                if results        
+                    each result in results
+                        a(href="/perfil/" + result.user_credential_number)
+                            .post-container#recent_visited
+                                    .author-info#buscador
+                                        img.author-photo(src='/imagen/' + result.user_credential_number + '.jpg', alt="Foto del autor")
+                                        .author-name #{result.user_name + ' ' + result.user_lastname}
+                                        .author-description #{result.user_credential_number}
+                                        .user-status
+                                            - var userState = result.user_state
+                                            div(class=userState == 0 ? 'gray-circle' : userState == 1 ? 'green-circle' : userState == 2 ? 'red-circle' : '')
+                                            span #{userState == 0 ? 'Desconectado' : userState == 1 ? 'En línea' : userState == 2 ? 'Ocupado' : ''}                                                                                                                                                                                                                                                                                                                                       
+                else
+                    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+                    .carrusel-content.container-fluid 
+                        .carrusel#miCarrusel.carousel.slide(data-ride='carousel')
+                            div.carousel.slide(data-ride='carousel')
+                            ol.carousel-indicators
+                                li(data-target='#miCarrusel', data-slide-to='0', class='active')
+                                li(data-target='#miCarrusel', data-slide-to='1')
+                                li(data-target='#miCarrusel', data-slide-to='2')
+                            div.carousel-inner
+                                div.carousel-item.active
+                                    img(src='img/config.png', class='w-100 img-fluid img-carrusel', alt='...')
+                                div.carousel-item
+                                    img(src='img/chat.png', class='w-100 img-fluid img-carrusel', alt='...')
+                                div.carousel-item
+                                    img(src='img/fondo_1.jpg', class='w-100 img-fluid img-carrusel', alt='...')
+                            a.carousel-control-prev(href='#miCarrusel', role='button', data-slide='prev')
+                                span.carousel-control-prev-icon(aria-hidden='true')
+                                span.sr-only Previous
+                            a.carousel-control-next(href='#miCarrusel', role='button', data-slide='next')
+                                span.carousel-control-next-icon(aria-hidden='true')
+                                span.sr-only Next
+                    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+                    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+                    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+                    h1.titleproduct Categorias
+                    .tablecategory-container
+                        table.tablecategory
+                            tr.trcategory
+                                td.category-container 
+                                    h2.category  Alimentos
+                                    img.category-image(src='img/comida.jpeg', alt="Imagen de la publicación" )
+                                td.category-container 
+                                    h2.category  Bebidas
+                                    img.category-image(src='img/config.png', alt="Imagen de la publicación" )
+                                td 
+                                    h2.category  Papeleria
+                                    img.category-image(src='img/config.png', alt="Imagen de la publicación" )        
+                            tr.trcategory
+                                td.category-container 
+                                    h2.category  Videojuegos
+                                    img.category-image(src='img/config.png', alt="Imagen de la publicación" )
+                                td.category-container 
+                                    h2.category  Servicios
+                                    img.category-image(src='img/config.png', alt="Imagen de la publicación" )
+                                td 
+                                    h2.category  Videojuegos
+                                    img.category-image(src='img/config.png', alt="Imagen de la publicación" )  
+                h1.titleproduct                                        
+                
+                if error_msg.length > 0
+                    .error
+                        each err in error_msg
+                            p= err                                    

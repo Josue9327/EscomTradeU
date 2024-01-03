@@ -79,7 +79,6 @@ body {
     flex-direction: column;
     margin: 0;
     width: 100%;
-    min-height: 100vh;
     height: 100%;
     font-family: 'Open Sans', sans-serif;
     background: linear-gradient(135deg, #670d10 0%, #092756 100%), 
@@ -407,8 +406,8 @@ button.btn-primary:hover {
     color: black;
 }
 .author-photo {
-    width: 50px; /* o el tamaño que prefieras */
-    height: 50px; /* igual al ancho para mantener la proporción */
+    width: 3rem; /* o el tamaño que prefieras */
+    height: 3rem; /* igual al ancho para mantener la proporción */
     border-radius: 50%; /* para hacerla circular */
     object-fit: cover; /* asegura que la imagen cubra completamente el área sin distorsionarse */
     margin-right: 10px;
@@ -551,6 +550,13 @@ button.btn-primary:hover {
     background-color: black;
     color: white;
 }
+.post-container#menu a{
+    margin-top: 10px;
+}
+.post-container#menu:hover a{
+    background-color: black;
+    color: white;
+}
 .post-container#menu img{
     background-color: white;
 }
@@ -625,11 +631,18 @@ button.btn-primary:hover {
     display: flex; /* Establece Flexbox */
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    height: 100vh;
+    height: 100;
     width: 50%;
     margin-left: 25%;
 }
-
+.perfillink{
+    color: black;
+    text-decoration: none;
+}
+.perfillink:hover{
+    color: grey;
+    text-decoration: none;
+}
 /* Contenedor del perfil */
 .profile-container {
     width: 95%;
@@ -713,20 +726,27 @@ button.btn-primary:hover {
     align-self: start;
 }
 .product-info{
-    width: auto;
+    width: 75%;
+
 }
 .product-name{
-    display: flex;
-    justify-content: space-between; /* Asegura un espaciado uniforme */
+    display: flex; /* Asegura un espaciado uniforme */
     align-items: center;
     width: 80%; /* Ajustar según sea necesario */
-    margin: 1rem 0; /* Espaciado uniforme */
+    margin-left: 1rem; /* Espaciado uniforme */
+    margin-right: 1rem; /* Espaciado uniforme */
+    justify-content: space-between;
+    text-align: justify;
+    overflow-wrap: break-word;
+    align-items: center;
+    
 }
-.product-name p{
-    margin-right: 0.5rem;
+.product-name h4{
+    width: 75%;
+    text-align: center;
 }
 .product-name input{
-    width: 50;
+    width: 50%;
     margin-left: 0.5rem;
     background-color: #EAD7D7;
     color: #000;
@@ -796,4 +816,243 @@ button.btn-primary:hover {
     font-size: 25px;
     padding: 10px;
 }
+.formularioVolver{
+    box-shadow: none;
+    border-radius: 8px;
+    padding: 15px;
+    width: auto;
+    margin: 0;
+
+}
+button#Volver{
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-end;
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+}
+button#Volver:hover{
+    background-color: #000;
+    color: white;
+}
+.formhead{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+.formhead h{
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+/*Mensajes*/
+.mesages-container{
+    width: 100%;
+    max-height: 50rem;
+    display: flex;
+    flex-direction: row;
+}
+.messages-info{
+    background-color: #000000;
+    padding: 1%;
+    justify-content: space-between;
+}
+.messages-contact-list{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+    width: 30%;
+    height: auto;
+    max-height: 50rem;
+    overflow-x: scroll;
+}
+.messages-content{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin: 1rem;
+    padding: 15px;
+    background-color: #000;
+    background: linear-gradient(135deg, #670d10 0%, #092756 100%), 
+                radial-gradient(ellipse at bottom, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%);
+    width: 75%;
+}
+.messages-message{
+    height: auto;
+    overflow-x: auto;
+    max-height: 75%;
+    border: solid 1px;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre los elementos */
+}
+.message-newmessage textarea{
+    background-color: white;
+    color: #000;
+    font-size: 1.5rem;
+    padding: 1%;
+}       
+.formulario-newmesage{
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    background-color: linear-gradient(to bottom, #670d10, #8c3d62);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+.message#borrar{
+    width: 3rem; /* o el tamaño que prefieras */
+    height: 3rem; /* igual al ancho para mantener la proporción */
+    border-radius: 50%; /* para hacerla circular */
+    object-fit: cover; /* asegura que la imagen cubra completamente el área sin distorsionarse */
+    margin-inline: .5rem;
+}
+
+.message-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.message-info p{
+    justify-content: space-between;
+}
+.contact-name{
+    font-weight: bold;
+    margin-right: 2rem;
+}
+.contact-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.messages-header{
+    padding: 1%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(135deg, #670d10 0%, #092756 100%), 
+                radial-gradient(ellipse at bottom, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%);
+    color: white;
+}
+.contact-options{
+    margin-right: 1%;
+    display: flex;
+    flex-direction: row;
+}
+.contact-photo#icono{
+    width: 3rem; /* o el tamaño que prefieras */
+    height: 3rem; /* igual al ancho para mantener la proporción */
+    border-radius: 50%; /* para hacerla circular */
+    object-fit: cover; /* asegura que la imagen cubra completamente el área sin distorsionarse */
+    margin-right: 10px;
+    border: 2px solid white; /* Borde blanco */
+    box-shadow: 0px 0px 10px white; /* Sombra blanca */
+    background-color: white;
+}
+.recuadro-grande-principal#buscadorp{
+    width: 100%;
+}
+.titleproduct{
+    border-bottom: solid 2px;
+    text-align: center;
+    width: 75%;
+}
+.tablecategory-container{
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+}
+.tablecategory{
+    width: 100%;
+}
+.category{
+    text-align: center;
+    width: 100%;
+    color: #000;
+}
+.category-image{
+    width: 15rem;
+    height: 15rem;
+    object-fit: contain;
+}
+.trcategory{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+.category-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+/*Carrusel*/
+.recuadro-principal.recuadro-grande-principal#buscadorp{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.carrusel-content{
+    background: linear-gradient(135deg, #670d10 0%, #092756 100%), 
+    radial-gradient(ellipse at bottom, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%);
+    margin: 0;
+    padding: 1%;
+    width: 75%;
+    height: auto;
+    
+} 
+.carrusel {
+    max-width: 600px; /* o el ancho que prefieras */
+    margin: auto; /* para centrarlo */
+    height: 30rem; /* Ajusta este valor según tus necesidades */
+    width: 30rem; /* Esto mantendrá la relación de aspecto de la imagen */
+}
+
+/* Estiliza la barra de desplazamiento en su totalidad */
+::-webkit-scrollbar {
+    width: 10px; /* Ajusta el ancho de la barra de desplazamiento */
+    height: 5px; /* Ajusta la altura para el desplazamiento horizontal, si es necesario */
+}
+
+/* Estiliza el rastro (track) de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+    background: transparent; /* Puedes cambiarlo si deseas un color de fondo */
+}
+
+/* Estiliza el control deslizante (thumb) de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+    background: 555; /* Color del deslizador */
+    border-radius: 10px; /* Bordes redondeados para el deslizador */
+}
+
+/* Estiliza el control deslizante al pasar el ratón por encima */
+::-webkit-scrollbar-thumb:hover {
+    background: #0005; /* Color del deslizador al pasar el ratón por encima */
+}
+
 /*SELECT users.user_credential_number, users.user_name, users.user_lastname, post.post_description, post.post_date FROM users INNER JOIN post ON users.user_credential_number = post.post_author WHERE users.user_credential_number = ?;

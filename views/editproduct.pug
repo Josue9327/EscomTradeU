@@ -1,0 +1,29 @@
+extends menulayout
+block content2                         
+            .recuadro-principal.recuadro-grande-principal#cargaprincipal
+                    .formhead
+                        h1 Editar Producto
+                        form.formularioVolver(action="/productos#cargaprincipal" method="get")
+                            button.button#Volver(type="submit") Volver 
+                    .product-container#newProduct
+                            .product-options
+                                form.formularioPublicar#producto_agregar(action="/producto_editar/" + products.id  method="post")
+                                    .product-name
+                                        input.input(type="text",name="id", value=products.id, hidden)
+                                    .product-name
+                                        p Nombre:
+                                        input.input(type="text",name="product_name", value=products.product_name)
+                                    .product-name
+                                        p Cantidad:
+                                        input.input(type="number",name="product_quantity", value=products.product_quantity)
+                                    .product-name
+                                        p Precio:
+                                        input.input(type="number",name="product_price", value=products.product_price)
+                                    .product-name
+                                        p Categoria:
+                                        input.input(type="text",name="product_category", value=products.product_category)         
+                                    .product-name
+                                        p descripcion:
+                                        textarea(name="product_description", cols="30", rows="10", placeholder=products.product_description)
+                                    button.button#producto_agregar(type="submit") Guardar producto                
+                                      

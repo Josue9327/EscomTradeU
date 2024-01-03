@@ -2,7 +2,7 @@ doctype html
 html(lang="es")
     head
         meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name='viewport', content='width=device-width, initial-scale=1')
         title ESCOMTradeUS
         link(rel="stylesheet", href="/css/styles.css")
         link(rel="icon", href="/img/logo.ico")
@@ -21,11 +21,13 @@ html(lang="es")
                 ul.navbar-nav.ms-auto    
                     if isAuthenticated               
                         li.nav-item
-                            a.nav-link.mx-2(href='/principal' class=activePage === 'principal' ? 'active' : '') Pagina principal           
+                            a.nav-link.mx-2(href='/principal#cargaprincipal' class=activePage === 'principal' ? 'active' : '') Pagina principal           
                         li.nav-item
                             a.nav-link.mx-2(href='/buscar' class=activePage === 'buscar' ? 'active' : '') Buscar perfiles 
                         li.nav-item
-                            a.nav-link.mx-2(href='/perfil' class=activePage === 'perfil' ? 'active' : '') Perfil 
+                            a.nav-link.mx-2(href='/buscarproductos#buscadorp' class=activePage === 'buscarp' ? 'active' : '') Productos 
+                        li.nav-item
+                            a.nav-link.mx-2(href='/perfil#perfil' class=activePage === 'perfil' ? 'active' : '') Perfil 
                     else
                         li.nav-item
                             a.nav-link.mx-2(href='/login' class=activePage === 'login' ? 'active' : '') Iniciar Sesion

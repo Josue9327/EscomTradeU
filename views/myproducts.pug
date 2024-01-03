@@ -1,10 +1,10 @@
 extends menulayout
 block content2                         
-            .recuadro-principal.recuadro-grande-principal
+            .recuadro-principal.recuadro-grande-principal#cargaprincipal
                     .product-container#newProduct
                         .author-info
                             .product-options
-                                form.formularioPublicar#producto_agregar(action="/addproduct" method="get")
+                                form.formularioPublicar#producto_agregar(action="/addproduct#cargaprincipal" method="get")
                                     button.button#producto_agregar(type="submit") Agregar producto                 
                     each product in products                                                 
                         .product-container
@@ -12,25 +12,25 @@ block content2
                                 img.product-photo(src='/img_product/' + product.product_imagenroute)
                                 .product-info
                                     .product-name
-                                        h3 Nombre:
-                                        h3=product.product_name
+                                        h5 Nombre:
+                                        h4=product.product_name
                                     .product-name
-                                        h3 Cantidad:
-                                        h3=product.product_quantity
+                                        h5 Cantidad:
+                                        h4=product.product_quantity
                                     .product-name
-                                        h3 Descripcion:
-                                        h3=product.product_description   
+                                        h5 Descripcion:
+                                        h4=product.product_description   
                                     .product-name
-                                        h3 Precio:
-                                        h3=product.product_price
+                                        h5 Precio:
+                                        h4=product.product_price
                                     .product-name
-                                        h3 Categoria:
-                                        h3=product.product_category
+                                        h5 Categoria:
+                                        h4=product.product_category
                                     .product-name
-                                        h3 Fecha de agregacion:
-                                        h3=product.product_added    
-                                .product-options            
-                                    form.formularioPublicar#producto_editar(action="/mispost" method="get")
-                                        button.button#editar_perfil(type="submit") Editar producto
-                                    form.formularioPublicar#producto_eliminar(action="/mispost" method="get")
-                                        button#editar_perfil(type="submit") Eliminar producto
+                                        h5 Fecha de agregacion:
+                                        h4=product.product_added    
+                                    .product-options            
+                                        form.formularioPublicar#producto_editar(action="/producto_editar/" + product.id + "#cargaprincipal" method="get")
+                                            button.button#editar_perfil(type="submit") Editar producto
+                                        form.formularioPublicar#producto_eliminar(action="/miproducto_borrar/" + product.id method="get")
+                                            button#editar_perfil(type="submit") Eliminar producto
