@@ -20,7 +20,7 @@ block content
                     p #{userGender == 'H' ? 'Hombre' : userGender == 'M' ? 'Mujer' : ''}
                     // Botones de acción
                     .perfil-options
-                      form.formularioPublicar(action="/mispost" method="get")
+                      form.formularioPublicar(action="/editperfil" method="get")
                         button#editar_perfil(type="submit") Editar perfil
                       form.formularioPublicar(action="/mispost" method="get")
                         button#editar_perfil(type="submit") Ver mis posts
