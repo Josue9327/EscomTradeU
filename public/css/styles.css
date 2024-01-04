@@ -766,13 +766,15 @@ a:hover .menu-name{
 }
 /*productos*/
 .product-container {
-    font-size: 2rem;
+    font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 20px;
-    padding: 15px;
+    padding: 1%;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
 }
 .product-photo{
     width: 10rem;  /* o el ancho deseado */
@@ -780,39 +782,45 @@ a:hover .menu-name{
     max-width: 10rem;
     height: 10rem;
     object-fit: contain; 
-    margin: 1rem;
-    align-self: start;
+}
+.product{
+    width: 80%;
+}
+.product p{
+    margin: 0;
+} 
+.product-caracteristic{
+    text-align: center;
+    font-weight: bold;
+    width: 25%;
 }
 .product-info{
-    width: 75%;
-
-}
-.product-name{
-    display: flex; /* Asegura un espaciado uniforme */
-    align-items: center;
-    width: 80%; /* Ajustar según sea necesario */
-    margin-left: 1rem; /* Espaciado uniforme */
-    margin-right: 1rem; /* Espaciado uniforme */
-    justify-content: space-between;
-    text-align: justify;
-    overflow-wrap: break-word;
-    align-items: center;
-    
-}
-.product-name h4{
-    width: 75%;
     text-align: center;
+    justify-content: center;
+    max-height: 10px;
+    word-break: break-all;
+    overflow-y: auto;
 }
-.product-name input{
-    width: 50%;
-    margin-left: 0.5rem;
+.product-info p{
+    max-height: 8rem;
+    max-width: 20rem;
+    width: 20rem;
+}
+
+.trpproduct{
+    justify-content: space-around;
+}
+.product-info input, textarea{
     background-color: #EAD7D7;
     color: #000;
     font-size: 1rem;
+    margin-bottom: 1%;
+    resize: none;
+    width: 100%;
 }
-.product-options{
-    display: flex;
-    justify-items: center;
+
+.edit_product{
+    text-align: center;
 }
 .button#editar_perfil{
     background-color: #0056b3;
@@ -822,12 +830,10 @@ a:hover .menu-name{
     background-color: #092756;
 }
 .button#producto_agregar{
-    margin: 5%;
-    margin-top: 10px;
     padding: 10px 15px;
+    margin-top: 1%;
     border: none;
     border-radius: 5px;
-    background-color: #670d10;
     color: white;
     cursor: pointer;
     font-size: 1.5rem;
@@ -839,11 +845,6 @@ a:hover .menu-name{
 #file-uploadproduct {
     width: 2px;
 }  
-.newproduct-name{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
 .product-container#newProduct{
     width: 100%;
     display: flex;
@@ -855,24 +856,9 @@ a:hover .menu-name{
     align-items: center;
     width: 100%; /* Ajustar según sea necesario */
 }
-.formularioPublicar#producto_agregar input{
-    width: auto;
-}
-.formularioPublicar#producto_agregar h1{
-    margin-bottom: 5rem;
-}
 .product-name textarea {
     flex-grow: 1; /* Permite que los input y textarea ocupen el espacio disponible */
     margin-left: 0.5rem;
-}
-.formularioPublicar#producto_agregar textarea{
-    width: 100%;
-    height: 10rem;
-    background-color: #EAD7D7;
-    color: #000000;
-    resize: none;
-    font-size: 25px;
-    padding: 10px;
 }
 .formularioVolver{
     box-shadow: none;

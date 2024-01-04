@@ -5,32 +5,47 @@ block content2
                         .author-info
                             .product-options
                                 form.formularioPublicar#producto_agregar(action="/addproduct#cargaprincipal" method="get")
-                                    button.button#producto_agregar(type="submit") Agregar producto                 
-                    each product in products                                                 
+                                    button.button#producto_agregar(type="submit") Agregar producto
+
+                    each product in products
                         .product-container
-                            .author-info
-                                img.product-photo(src='/img_product/' + product.product_imagenroute)
-                                .product-info
-                                    .product-name
-                                        h5 Nombre:
-                                        h4=product.product_name
-                                    .product-name
-                                        h5 Cantidad:
-                                        h4=product.product_quantity
-                                    .product-name
-                                        h5 Descripcion:
-                                        h4=product.product_description   
-                                    .product-name
-                                        h5 Precio:
-                                        h4=product.product_price
-                                    .product-name
-                                        h5 Categoria:
-                                        h4=product.product_category
-                                    .product-name
-                                        h5 Fecha de agregacion:
-                                        h4=product.product_added    
-                                    .product-options            
+                            table.product.edit_product
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Nombre:
+                                    td.product-info    
+                                        p=product.product_name
+                                    td.product-info(rowspan="6") 
+                                        img.product-photo(src='/img_product/' + product.product_imagenroute) 
+                                    td.product-options(rowspan="6")             
                                         form.formularioPublicar#producto_editar(action="/producto_editar/" + product.id + "#cargaprincipal" method="get")
-                                            button.button#editar_perfil(type="submit") Editar producto
+                                            button(type="submit") Editar producto
                                         form.formularioPublicar#producto_eliminar(action="/miproducto_borrar/" + product.id method="get")
-                                            button#editar_perfil(type="submit") Eliminar producto
+                                            button(type="submit") Eliminar producto         
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Cantidad:
+                                    td.product-info     
+                                        p=product.product_quantity
+                                tr.trproduct        
+                                    td.product-caracteristic    
+                                        p Precio:
+                                    td.product-info     
+                                        p=product.product_price 
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Descripcion:
+                                    td.product-info     
+                                        p=product.product_description
+                                tr.trproduct        
+                                    td.product-caracteristic
+                                        p Categoria:
+                                    td.product-info     
+                                        p=product.product_category
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Fecha de agregación:
+                                    td.product-info       
+                                        p=product.product_added                                                
+                                
+                    
