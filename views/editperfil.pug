@@ -1,0 +1,29 @@
+extends menulayout
+block content2                         
+            .recuadro-principal.recuadro-grande-subprincipal#cargaprincipal
+                    .formhead
+                        h1 Editar Perfil
+                        form.formularioVolver(action="/perfil#cargaprincipal" method="get")
+                            button.button#Volver(type="submit") Volver           
+                    .product-container
+                            table.product
+                                form(action="/editar_perfil" method="post")
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Nombre:
+                                        td.product-info 
+                                            input.input(type="text",name="user_name", value=profile.user_name)
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Apellidos:
+                                        td.product-info 
+                                            input.input(type="text",name="user_lastname", value=profile.user_lastname)
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Fecha de nacimiento:
+                                        td.product-info 
+                                            input.input(type="date",name="user_date", value=profile.fecha_nacimiento)         
+                                    tr.trproduct        
+                                        td.product-info   
+                                        td.product-info           
+                                            button.button#producto_agregar(type="submit") Guardar                          

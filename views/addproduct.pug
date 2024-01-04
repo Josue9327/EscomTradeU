@@ -1,33 +1,47 @@
 extends menulayout
 block content2                         
-            .recuadro-principal.recuadro-grande-principal#cargaprincipal
+            .recuadro-principal.recuadro-grande-subprincipal#cargaprincipal
                     .formhead
                         h1 Nuevo Producto
                         form.formularioVolver(action="/productos#cargaprincipal" method="get")
                             button.button#Volver(type="submit") Volver 
-                    .product-container#newProduct
-                            .product-options
-                                form.formularioPublicar#producto_agregar(action="/addproduct" method="post", enctype="multipart/form-data")
-                                    .product-name
-                                        p Nombre:
-                                        input.input(type="text",name="product_name", placeholder="Nombre del producto")
-                                    .product-name
-                                        p Cantidad:
-                                        input.input(type="number",name="product_quantity", placeholder="Cantidad del producto")
-                                    .product-name
-                                        p Precio:
-                                        input.input(type="number",name="product_price", placeholder="Costo del producto")
-                                    .product-name
-                                        p Categoria:
-                                        input.input(type="text",name="product_category", placeholder="Nombre del producto")         
-                                    .product-name
-                                        p descripcion:
-                                        textarea(name="product_description", cols="30", rows="10", placeholder="Descripcion")
-                                    .product-name
-                                            p Imagen:         
+                    .product-container
+                            table.product
+                                form(action="/addproduct" method="post", enctype="multipart/form-data")
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Nombre:
+                                        td.product-info 
+                                            input.input(type="text",name="product_name", placeholder="Nombre del producto")
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Cantidad:
+                                        td.product-info 
+                                            input.input(type="number",name="product_quantity", placeholder="Cantidad del producto")
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Precio:
+                                        td.product-info 
+                                            input.input(type="number",name="product_price", placeholder="Costo del producto")         
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Catetoria:
+                                        td.product-info 
+                                            input.input(type="text",name="product_category", placeholder="Nombre del producto")
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Descripcion:
+                                        td.product-info 
+                                            textarea(name="product_description", cols="30", rows="10", placeholder="Descripcion")
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Imagen:                                          
+                                        td.product-info
                                             label(for="file-upload" class="custom-file-upload")
                                                 i.fa.fa-cloud-upload
                                                 | Subir Imagen
                                             input#file-upload(type="file" name="imageUpload" style="display: none;")
-                                    button.button#producto_agregar(type="submit") Agregar producto                
-                                      
+                                    tr.trproduct        
+                                        td.product-info   
+                                        td.product-info           
+                                            button.button#producto_agregar(type="submit") Agregar producto       

@@ -37,6 +37,36 @@ router.get('/perfil', ensureAuthenticated,(req, res) => {
     );
     
 });
+router.get('/editperfil', ensureAuthenticated,(req, res) => {
+    const imgname = req.user.user_credential_number + '.jpg';
+    const id = req.user.user_credential_number;
+    pool.query(
+        'SELECT user_name, user_lastname, user_gender, DATE_FORMAT(user_date, \'%Y-%m-%d\') AS fecha_nacimiento FROM users WHERE user_credential_number = ?;', 
+        [id],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            res.render("editperfil", { activePage: 'principal', img_route: imgname, profile: results[0]  });
+        }
+    );
+    
+});
+router.post('/editar_perfil', ensureAuthenticated,(req, res) => {
+    const { user_name, user_lastname, user_date } = req.body;
+    const id = req.user.user_credential_number;
+    pool.query(
+        'UPDATE users SET user_name = ?, user_lastname = ?, user_date = ? WHERE user_credential_number = ?;', 
+        [user_name, user_lastname, user_date, id],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            res.redirect("/perfil");
+        }
+    );
+    
+});
 router.get('/buscar', ensureAuthenticated,(req, res) => {
     const error_msg = req.flash('error'); // Obtiene el mensaje de error
     var imgname;

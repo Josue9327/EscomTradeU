@@ -1,29 +1,40 @@
 extends menulayout
 block content2                         
-            .recuadro-principal.recuadro-grande-principal#cargaprincipal
+            .recuadro-principal.recuadro-grande-subprincipal#cargaprincipal
                     .formhead
                         h1 Editar Producto
                         form.formularioVolver(action="/productos#cargaprincipal" method="get")
-                            button.button#Volver(type="submit") Volver 
-                    .product-container#newProduct
-                            .product-options
-                                form.formularioPublicar#producto_agregar(action="/producto_editar/" + products.id  method="post")
-                                    .product-name
-                                        input.input(type="text",name="id", value=products.id, hidden)
-                                    .product-name
-                                        p Nombre:
-                                        input.input(type="text",name="product_name", value=products.product_name)
-                                    .product-name
-                                        p Cantidad:
-                                        input.input(type="number",name="product_quantity", value=products.product_quantity)
-                                    .product-name
-                                        p Precio:
-                                        input.input(type="number",name="product_price", value=products.product_price)
-                                    .product-name
-                                        p Categoria:
-                                        input.input(type="text",name="product_category", value=products.product_category)         
-                                    .product-name
-                                        p descripcion:
-                                        textarea(name="product_description", cols="30", rows="10", placeholder=products.product_description)
-                                    button.button#producto_agregar(type="submit") Guardar producto                
-                                      
+                            button.button#Volver(type="submit") Volver           
+                    .product-container
+                            table.product
+                                form(action="/producto_editar/" + products.id  method="post")
+                                    input.input(type="text",name="id", value=products.id, hidden)
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Nombre:
+                                        td.product-info 
+                                            input.input(type="text",name="product_name", value=products.product_name)
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Cantidad:
+                                        td.product-info 
+                                            input.input(type="number",name="product_quantity", value=products.product_quantity)
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Precio:
+                                        td.product-info 
+                                            input.input(type="number",name="product_price", value=products.product_price)         
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Categoria:
+                                        td.product-info 
+                                            input.input(type="text",name="product_category", value=products.product_category)
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Descripcion:
+                                        td.product-info 
+                                            textarea(name="product_description", cols="30", rows="10", placeholder=products.product_description)
+                                    tr.trproduct        
+                                        td.product-info   
+                                        td.product-info           
+                                            button.button#producto_agregar(type="submit") Guardar producto                          
