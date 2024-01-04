@@ -21,42 +21,33 @@ router.get('/', (req, res) => {
     }
     res.redirect('/principal');
 });
-router.get('/principal', ensureAuthenticated, (req, res) => {
-    const imgname = req.user.user_credential_number + '.jpg';
-    pool.query(
-        'SELECT post.*, users.user_name AS autor, users.user_lastname AS autor_lastname FROM post INNER JOIN users ON post.post_author = users.user_credential_number ORDER BY post.post_date DESC;', 
-        (error, results) => {
-            const recent_profiles = [
-                {
-                    profilename: "Josue",
-                    profilePhoto: "2023630231.jpg",
-                },
-                {
-                    profilename: "Charly",
-                    profilePhoto: "2022.png",
-                },
-                {
-                    profilename: "Emi",
-                    profilePhoto: "2022.png",
-                },
-            ];
-            if (error) {
-                return res.status(500).json({ error });
-            }
-            // Formatear las fechas de cada post
-            const formattedResults = results.map(post => {
-                // Suponiendo que 'post_date' es tu columna TIMESTAMP
-                const formattedDate = moment(post.post_date).tz('America/Mexico_City').format('LLLL');
-                // Retornar un nuevo objeto con la fecha formateada
-                return {
-                    ...post,
-                    post_date: formattedDate
-                };
-            });
-            res.render("principal", { activePage: 'principal', img_route: imgname, posts: formattedResults, recent_profiles });
-        }
-    );
+router.get('/principal', ensureAuthenticated, async (req, res) => {
+    try {
+        const userId = req.user.user_credential_number;
+        const imgname = userId + '.jpg';
+
+        const posts = await getPosts(pool);
+        const messages = await getMessagesFromNonContacts(pool, userId);
+
+        const formattedPosts = posts.map(post => {
+            const formattedDate = moment(post.post_date).tz('America/Mexico_City').format('LLLL');
+            return { ...post, post_date: formattedDate };
+        });
+
+        const hasMessagesFromNonContacts = messages;
+
+        res.render("principal", {
+            activePage: 'principal',
+            img_route: imgname,
+            posts: formattedPosts,
+            hasMessagesFromNonContacts: hasMessagesFromNonContacts
+        });
+    } catch (error) {
+        console.error('Error en la ruta /principal:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
 });
+
 router.get('/contact', (req, res) => {
     var imgname;
     // Comprobar si el usuario está en sesión
@@ -103,4 +94,45 @@ router.get('/img_posts/:nombreImagen', (req, res) => {
         }
     });
 });
+function getPosts(pool) {
+    return new Promise((resolve, reject) => {
+        pool.query(
+            'SELECT post.*, users.user_name AS autor, users.user_lastname AS autor_lastname FROM post INNER JOIN users ON post.post_author = users.user_credential_number ORDER BY post.post_date DESC;',
+            (error, results) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+            }
+        );
+    });
+}
+
+function getMessagesFromNonContacts(pool, userId) {
+    return new Promise((resolve, reject) => {
+        pool.query(
+            'SELECT m1.*, u.user_name, u.user_lastname, u.user_credential_number FROM messages m1 ' +
+            'INNER JOIN ( ' +
+            'SELECT sender_id, MAX(created_at) as max_date ' +
+            'FROM messages ' +
+            'WHERE receiver_id = ? ' +
+            'GROUP BY sender_id ' +
+            ') m2 ON m1.sender_id = m2.sender_id AND m1.created_at = m2.max_date ' +
+            'LEFT JOIN contacts c ON m1.sender_id = c.contact_id AND c.contact_user = ? ' +
+            'INNER JOIN users u ON m1.sender_id = u.user_credential_number ' +
+            'WHERE m1.receiver_id = ? AND c.contact_id IS NULL ' +
+            'ORDER BY m1.created_at DESC;',
+            [userId, userId, userId],
+            (error, results) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+            }
+        );
+    });
+}
+
 export default router;

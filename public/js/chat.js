@@ -2,26 +2,46 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const socket = io();
-
+    const userid = document.getElementById('user_id').value;
+    const user_contact = document.getElementById('user_contact').value;
+    const roomId = [userid, user_contact].sort().join('_');
+    const data = {
+        userid,
+        user_contact,
+        roomId
+    }
     socket.on('connect', () => {
         console.log('Conectado al servidor de Socket.IO');
+        socket.emit('joinRoom', data);
+    });
+    socket.on('message', (data) => {
+        displayMessage(data)
     });
 
-    // Ejemplo: Unirse a una sala específica
-    const roomId = 'alguna_sala'; 
-    socket.emit('joinRoom', roomId);
-
-    // Ejemplo: Escuchar mensajes de chat
-    socket.on('message', (mensaje) => {
-        console.log('Nuevo mensaje:', mensaje);
-        // Actualizar UI aquí...
-    });
-
-    // Enviar mensaje
     const messageForm = document.querySelector('#message-form');
     messageForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const message = this.querySelector('input').value;
-        socket.emit('chatMessage', { room: roomId, message: message });
+        const message = document.querySelector('#message').value;
+        socket.emit('sendMessage', { room: roomId, message: message,  userid, user_contact});
     });
+    socket.on('messageHistory', (data) => {
+        console.log(data);
+        if(data){
+            data.forEach((data) => {
+                displayMessage(data);
+            });
+        }
+    });
+    function displayMessage(data) {
+        console.log(data);
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        if (userid === data.senderId) { // Asumiendo que 'userId' es el ID del usuario actual
+            messageDiv.classList.add('sender');
+        } else {
+            messageDiv.classList.add('receiver');
+        }
+        messageDiv.textContent = data.message;
+        document.querySelector('#messageContainer').appendChild(messageDiv);
+    }
 });

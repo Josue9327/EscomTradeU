@@ -35,6 +35,7 @@ router.get('/messages/:user_id', ensureAuthenticated, async (req, res) => {
             contacts: contactsResults,
             messages: messagesResults,
             userchat: userId,
+            userid: id,
             contactDetails: contactInfo.length > 0 ? contactInfo[0] : null
         });
 

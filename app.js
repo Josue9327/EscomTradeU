@@ -49,7 +49,7 @@ app.use(helmet.contentSecurityPolicy({
         // otras directivas...
     }
 }));
-app.use(morgan("dev"));
+//app.use(morgan("dev"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "public")));

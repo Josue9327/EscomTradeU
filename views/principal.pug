@@ -23,11 +23,17 @@ block content2
                         if post.post_img != 'NULL'
                             .post-content
                                     img.post-image(src='/img_posts/' + post.post_img, alt="Imagen de la publicación", )
-            .recuadro-principal.recuadro-delgado-principal#menu
-                h3 Perfiles Visitados
-                each recent_profile in recent_profiles
-                    a(href='/')
-                        .post-container#recent_visited
-                            .author-info
-                                img.author-photo(src='/imagen/' + recent_profile.profilePhoto, alt="Foto del autor")
-                                .author-name #{recent_profile.profilename}
+            .recuadro-principal.recuadro-derecho-delgado-principal
+                h3 Solicitud de mensaje
+                each not in hasMessagesFromNonContacts
+                    .not-container
+                        .not-info
+                            img.not-photo(src='/imagen/' + not.sender_id + '.jpg', alt="Foto del autor")
+                            .not-name #{not.user_name}  
+                        form.notform(action="/anadircontacto" method="post")
+                            input(name="id_contact", hidden, value=not.user_credential_number)
+                            button(type="submit") Añadir a contactos
+                else   
+               
+                
+                    

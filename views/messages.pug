@@ -1,6 +1,6 @@
 extends menulayout
 block content2                                   
-            .recuadro-principal.recuadro-grande-principal#cargaprincipal
+            .recuadro-principal.recuadro-grande-subprincipal#cargaprincipal
                 .mesages-container
                     .messages-contact-list
                         h3 Lista de Contactos
@@ -15,16 +15,13 @@ block content2
                             .messages-header
                                 img.contact-photo#icono(src='/imagen/' + userchat + '.jpg')
                                 h5.contact-name=contactDetails.user_name + " " + contactDetails.user_lastname
-                            .messages-message
-                                h1 algo
-                                h1 algo
-                                h1 algo
-                                h1 algo
-
+                                input(id="user_id" hidden value=userid)
+                                input(id="user_contact" hidden value=userchat)
+                            .messages-message#messageContainer
                             .message-newmessage
                                 .formcontenedor
-                                    form.formulario-newmesage(method="post", action="/buscar")
-                                        textarea.input-busqueda(type="search" name="term" placeholder="Mensaje..." aria-label="Search")
+                                    form.formulario-newmesage#message-form(method="post", action="/buscar")
+                                        textarea.input-busqueda(type="search" id="message" placeholder="Mensaje..." aria-label="Search")
                                         input.boton-busqueda(type="submit" value="Enviar")
                     else
                         .messages-content

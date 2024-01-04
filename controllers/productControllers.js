@@ -18,7 +18,7 @@ const post = async (req, res) => {
     pool.query(
         'INSERT INTO products (product_name, product_quantity, product_price, product_category, product_description, product_added, product_imagenroute, product_user) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
         [product_name, product_quantity, product_price, product_category, product_description, dateToStore, file, product_user],
-        (error, results, post_author, file) => {
+        (error, results) => {
             if (error) {
                 return res.status(500).json({ error });
             }

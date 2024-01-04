@@ -1,6 +1,6 @@
 import mysql from "mysql";
 const pool = mysql.createPool({
-    connectionLimit: 50,
+    connectionLimit: 100,
     host: 'localhost',
     port: 3306,
     database: 'escomtradeusdatabase',

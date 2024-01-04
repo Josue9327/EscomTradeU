@@ -18,7 +18,7 @@ const post = async (req, res) => {
     pool.query(
         'INSERT INTO post (post_description, post_author, post_img) VALUES (?, ?, ?)', 
         [postContent, post_author, file],
-        (error, results, post_author, file) => {
+        (error, results) => {
             if (error) {
                 return res.status(500).json({ error });
             }

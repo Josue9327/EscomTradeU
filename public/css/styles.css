@@ -365,13 +365,23 @@ button.btn-primary:hover {
 
 .recuadro-grande-principal {
     min-height: 75%;
+    width: 50%; /* Ancho del recuadro grande */
+    height: auto;
+}
+.recuadro-grande-subprincipal{
+    min-height: 75%;
     width: 75%; /* Ancho del recuadro grande */
     height: auto;
 }
-
 .recuadro-delgado-principal {
     height: auto;
     width: 25%; /* Ancho del recuadro delgado */
+    color: #000000;
+    max-height: 50rem;
+}
+.recuadro-derecho-delgado-principal {
+    height: auto;
+    width: 18%; /* Ancho del recuadro delgado */
     color: #000000;
     max-height: 50rem;
 }
@@ -399,11 +409,23 @@ button.btn-primary:hover {
     align-items: center;
     margin-bottom: 1px;
 }
-.author-name a:visited{
-    color: black;
-}
 .author-name a{
     color: black;
+}
+.author-name p{
+    color: black;
+}
+.linkmenu a{
+    color: #000;
+}
+a .menu-name {
+    color: #000;
+}
+a:hover .menu-name{
+    color: #fff;
+}
+.linkmenu a:visited{
+    color: #000;
 }
 .author-photo {
     width: 3rem; /* o el tamaño que prefieras */
@@ -954,6 +976,17 @@ button#Volver:hover{
 .message-info p{
     justify-content: space-between;
 }
+.sender {
+    background-color: #daf1da;
+    text-align: right;
+    margin-left: auto; /* Alinea a la derecha */
+}
+
+.receiver {
+    background-color: #f1f0da;
+    text-align: left;
+    margin-right: auto; /* Alinea a la izquierda */
+}
 .contact-name{
     font-weight: bold;
 }
@@ -1056,7 +1089,47 @@ button#Volver:hover{
     padding: 0;
     width: auto;
 }
-
+.not-container{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1%;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.not-container:hover{
+    background-color: #000;
+    color: white;
+}
+a .not-name{
+    color: #000;
+    text-decoration: none;
+}
+a:hover .not-name{
+    color: #fff;
+}
+.not-photo{
+    width: 3rem; /* o el tamaño que prefieras */
+    height: 3rem; /* igual al ancho para mantener la proporción */
+    border-radius: 50%; /* para hacerla circular */
+    object-fit: cover; /* asegura que la imagen cubra completamente el área sin distorsionarse */
+    margin-right: 10px;
+    border: 2px solid white; /* Borde blanco */
+    box-shadow: 0px 0px 10px white; /* Sombra blanca */
+    background-color: white;
+}
+.not-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1px;
+}
+.notform{
+    display: flex;
+    justify-content: center;
+    box-shadow: none;
+    width: 100%;
+}
 /* Estiliza la barra de desplazamiento en su totalidad */
 ::-webkit-scrollbar {
     width: 10px; /* Ajusta el ancho de la barra de desplazamiento */
