@@ -51,6 +51,21 @@ router.get('/buscar', ensureAuthenticated,(req, res) => {
     res.render("buscador", { activePage: 'buscar', img_route: imgname, error_msg});
     
 });
+router.post('/anadircontacto', ensureAuthenticated,(req, res) => {
+    const { id_contact } = req.body;
+    const id_user= req.user.user_credential_number;
+    pool.query(
+        'INSERT INTO contacts (contact_user, contact_id) VALUES (?, ?)', 
+        [id_user, id_contact],
+        (error, results, post_author, file) => {
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            res.redirect("/perfil/" + id_contact);
+        }
+    );
+    
+});
 router.get('/mispost', ensureAuthenticated, (req, res) => {
     const imgname = req.user.user_credential_number + '.jpg';
     pool.query(
@@ -77,6 +92,7 @@ router.get('/mispost', ensureAuthenticated, (req, res) => {
 router.get('/perfil/:userId',ensureAuthenticated, (req, res) => {
     var imgname;
     const perfilId = req.params.userId;
+    const id = req.user.user_credential_number;
     // Comprobar si el usuario está en sesión
     if (req.user) {
         imgname = req.user.user_credential_number + '.jpg';
@@ -85,8 +101,8 @@ router.get('/perfil/:userId',ensureAuthenticated, (req, res) => {
         imgname = 'default.png'; // O cualquier imagen por defecto que tengas
     }
     pool.query(
-        'SELECT user_name, user_lastname,user_state, user_gender, user_credential_number, DATE_FORMAT(user_date, \'%d-%m-%Y\') AS fecha_nacimiento FROM users WHERE user_credential_number = ?', 
-        [perfilId],
+        'SELECT user_name, user_lastname,user_state, user_gender, user_credential_number, DATE_FORMAT(user_date, \'%d-%m-%Y\') AS fecha_nacimiento, EXISTS (SELECT 1 FROM contacts WHERE contacts.contact_user = ? AND contacts.contact_id = ? ) AS ContactoExistente FROM users WHERE user_credential_number = ?', 
+        [id, perfilId, perfilId],
         (error, results) => {
             if (error) {
                 return res.status(500).json({ error });
@@ -100,8 +116,6 @@ router.get('/perfil/:userId',ensureAuthenticated, (req, res) => {
             
         }
     );
-
-    
 });
 router.post('/buscar', searchControllers.search);
 // Exportar el router

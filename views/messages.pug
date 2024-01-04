@@ -1,78 +1,30 @@
 extends menulayout
-block content2                                     
+block content2                                   
             .recuadro-principal.recuadro-grande-principal#cargaprincipal
                 .mesages-container
                     .messages-contact-list
                         h3 Lista de Contactos
-                        a(href='/principal#cargaprincipal')
-                        .post-container#menu
-                            .message-info
-                                .contact-info
-                                    img.author-photo#icono(src='img/home.png', alt="Foto del autor")
-                                    a.perfillink(href="/")
-                                        h5.contact-name Home
-                                .contact-options
-                                    a(href="/")    
-                                        img.message#borrar(src='img/perfil.png', alt="Foto del autor")
-                                    a(href="/")    
-                                        img.message#borrar(src='img/eliminar.png', alt="Foto del autor")
-                        a(href='/principal#cargaprincipal')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/home.png', alt="Foto del autor")
-                                .author-name Home   
-                        a(href='/principal#cargaprincipal')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/home.png', alt="Foto del autor")
-                                .author-name Home   
-                        a(href='/principal#cargaprincipal')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/home.png', alt="Foto del autor")
-                                .author-name Home   
-                        a(href='/principal#cargaprincipal')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/home.png', alt="Foto del autor")
-                                .author-name Home
-                        a(href='/principal#cargaprincipal')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/home.png', alt="Foto del autor")
-                                .author-name Home   
-                        a(href='/principal#cargaprincipal')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/home.png', alt="Foto del autor")
-                                .author-name Home   
-                        a(href='/principal#cargaprincipal')
-                        .post-container#menu
-                            .author-info
-                                img.author-photo#icono(src='img/home.png', alt="Foto del autor")
-                                .author-name Home                                                                                                   
-                    .messages-content
-                        .messages-header
-                            img.contact-photo#icono(src='img/home.png', alt="Foto del autor")
-                            h5.contact-name Home
-                        .messages-message
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                            h1 algo
-                        .message-newmessage
-                            .formcontenedor
-                                form.formulario-newmesage(method="post", action="/buscar")
-                                    textarea.input-busqueda(type="search" name="term" placeholder="Mensaje..." aria-label="Search")
-                                    input.boton-busqueda(type="submit" value="Enviar")
+                            each contact in contacts
+                                a.contact-container(href="/messages/" + contact.user_credential_number + "#cargaprincipal")
+                                    img(src='/imagen/' + contact.user_credential_number + '.jpg')
+                                    p=contact.user_name + " " + contact.user_lastname                                                                                             
+                    if userchat != 0
+                        script(src="/socket.io/socket.io.js")
+                        script(src="/js/chat.js")  
+                        .messages-content
+                            .messages-header
+                                img.contact-photo#icono(src='/imagen/' + userchat + '.jpg')
+                                h5.contact-name=contactDetails.user_name + " " + contactDetails.user_lastname
+                            .messages-message
+                                h1 algo
+                                h1 algo
+                                h1 algo
+                                h1 algo
+
+                            .message-newmessage
+                                .formcontenedor
+                                    form.formulario-newmesage(method="post", action="/buscar")
+                                        textarea.input-busqueda(type="search" name="term" placeholder="Mensaje..." aria-label="Search")
+                                        input.boton-busqueda(type="submit" value="Enviar")
+                    else
+                        .messages-content

@@ -19,4 +19,14 @@ block content
                       - var userGender = perfil.user_gender
                       p #{userGender == 'H' ? 'Hombre' : userGender == 'M' ? 'Mujer' : ''}
                       // Botones de acción
-                      button#editar_perfil Mandar mensaje
+                      .perfil-options
+                        if perfil.ContactoExistente
+                          form.formularioPublicar(action="/eliminarcontacto" method="post")
+                            input(name="id_contact", hidden, value=perfil.user_credential_number)
+                            button#editar_perfil(type="submit") Eliminar de mis contactos
+                        else
+                          form.formularioPublicar(action="/anadircontacto" method="post")
+                            input(name="id_contact", hidden, value=perfil.user_credential_number)
+                            button#editar_perfil(type="submit") Añadir a contactos
+                        form.formularioPublicar(action="/mispost" method="get")
+                          button#editar_perfil(type="submit") Ver post publicados

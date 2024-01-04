@@ -13,6 +13,7 @@ import prodcutsRoutes from './routes/productsRoutes.js';
 import messagesRoutes from './routes/messageRoutes.js';
 import errorController from './controllers/errorControllers.js';
 import flash from "connect-flash";
+import socketControllers from './controllers/socketControllers.js';
 import { createServer } from 'http';
 import { getIO, initSocket } from './config/socketioConfig.js';
 import sharedsession from "express-socket.io-session";
@@ -85,16 +86,7 @@ const io = getIO();
 io.use(sharedsession(expressSession, {
     autoSave: true
 }));
-io.on('connection', (socket) => {
-    console.log("Cliente conectado al socket");
-    
-    socket.on('disconnect', () => {
-        console.log("Cliente desconectado");
-    });
-});
-io.on('error', (error) => {
-    console.error('Error en la inicialización de Socket.IO:', error);
-});
+socketControllers(io);
 server.listen(PORT, () => {
     //const algo = path.join(__dirname, '/private/img_profile');
     console.log("Jalando");
