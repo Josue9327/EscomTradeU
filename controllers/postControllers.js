@@ -1,4 +1,5 @@
 import pool from '../config/databaseConfig.js';
+import { deletepostFile } from '../config/multerConfig.js';
 const post = async (req, res) => {
     const { postContent } = req.body;
     const timestamp = req.uniqueId;
@@ -32,22 +33,22 @@ const deletePost = async (req, res) => {
     const post_author = req.user.user_credential_number;
 
     // Verificar si el post pertenece al usuario actual antes de permitir el borrado
-    const result = await pool.query('DELETE * FROM post WHERE id = ? AND post_author = ?', [postId, post_author]);
-
-    if (result.length === 0) {
-        // Si el post no pertenece al usuario actual, devuelve un error
-        return res.status(403).json({ error: 'No tienes permisos para borrar este post' });
-    }
-
-    // Borrar el post
-    pool.query('DELETE FROM post WHERE id = ? AND post_author = ?', [postId, post_author], (error, results) => {
-        if (error) {
-            console.error('Error al borrar el post:', error);
-            return res.status(500).json({ error: 'Error interno del servidor' });
+    const result = pool.query('SELECT post_img FROM post WHERE id = ? AND post_author = ?',
+     [postId, post_author], (error, results) =>{
+        if (result.length === 0) {
+            return res.status(403).json({ error: 'No tienes permisos para borrar este post' });
         }
-
-        // Envía una respuesta exitosa
-        res.redirect("/mispost");
+        const img = results[0].post_img;
+        // Borrar el post
+        pool.query('DELETE FROM post WHERE id = ? AND post_author = ?', [postId, post_author], (error, results) => {
+            if (error) {
+                console.error('Error al borrar el post:', error);
+                return res.status(500).json({ error: 'Error interno del servidor' });
+            }
+            // Envía una respuesta exitosa
+            deletepostFile(img);
+            res.redirect("/mispost");
+        });
     });
 };
 export default {

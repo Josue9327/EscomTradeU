@@ -82,13 +82,24 @@ const deleteproductFile = (name) => {
         // Manejar el error, posiblemente llamar a next(err) si estás dentro de un middleware
         console.error("No se pudo eliminar el archivo: ", err);
       } else {
-        // El archivo fue eliminado
-        console.log("Archivo eliminado con éxito");
+
+      }
+    });
+  };
+  const deletepostFile = (name) => {
+    const route = path.join(__dirname, '/private/img_posts')
+    const file = route+"/"+name;
+    fs.unlink(file, (err) => {
+      if (err) {
+        // Manejar el error, posiblemente llamar a next(err) si estás dentro de un middleware
+        console.error("No se pudo eliminar el archivo: ", err);
+      } else {
+
       }
     });
   };
 // Exportar ambas configuraciones de Multer
-export { uploadProfile, uploadProductImage, uploadPostImage, convertToJPEG, deleteproductFile };
+export { uploadProfile, uploadProductImage, uploadPostImage, convertToJPEG, deleteproductFile, deletepostFile };
 
 
 
