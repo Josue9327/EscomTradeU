@@ -79,7 +79,12 @@ app.get('/numero-sesiones', (req, res) => {
 });
 // Middleware para capturar Error 404
 app.use(errorController.error404);
-
+app.use((err, req, res, next) => {
+    if (res.headersSent) {
+      return next(err);
+    }
+    errorController.error500(err, req, res, next);
+  });
 const server = createServer(app);
 initSocket(server);
 const io = getIO();

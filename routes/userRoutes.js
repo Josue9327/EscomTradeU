@@ -96,6 +96,22 @@ router.post('/anadircontacto', ensureAuthenticated,(req, res) => {
     );
     
 });
+router.post('/eliminarcontacto', ensureAuthenticated,(req, res) => {
+    const { id_contact } = req.body;
+    const id_user= req.user.user_credential_number;
+    pool.query(
+        'DELETE FROM contacts WHERE contact_user = ? AND contact_id = ?', 
+        [id_user, id_contact],
+        (error, results, post_author, file) => {
+            if (error) {
+                res.status(500);
+                console.log(error);
+            }
+            res.redirect("/perfil/" + id_contact);
+        }
+    );
+    
+});
 router.get('/mispost', ensureAuthenticated, (req, res) => {
     const imgname = req.user.user_credential_number + '.jpg';
     pool.query(

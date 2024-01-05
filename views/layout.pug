@@ -33,7 +33,7 @@ html(lang="es")
                             a.nav-link.mx-2(href='/signup' class=activePage === 'Signup' ? 'active' : '') Crear una cuenta
                     li.nav-item
                         a.nav-link.mx-2(href='/contact' class=activePage === 'contact' ? 'active' : '') Contact
-                    if isAuthenticated
+                    if img_route
                         li.nav-item
                             a(href="/perfil")
                                 img#menuImage(src='/imagen/' + img_route alt='Imagen de perfil', height='120', style='border-radius: 50%;cursor: pointer;')                                   

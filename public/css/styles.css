@@ -315,7 +315,6 @@ button.btn-primary:hover {
     border-color: #0056b3;
 }
 .footer {
-    margin-top: 5%;
     background-color: #000000;
     color: white;
     padding: 20px 0;
@@ -1157,5 +1156,14 @@ a:hover .not-name{
 ::-webkit-scrollbar-thumb:hover {
     background: #0005; /* Color del deslizador al pasar el ratón por encima */
 }
-
+.errorContainer{
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+   margin-bottom: 1%;
+}
+.errorContainer img{
+    width: 30rem;
+}
 /*SELECT users.user_credential_number, users.user_name, users.user_lastname, post.post_description, post.post_date FROM users INNER JOIN post ON users.user_credential_number = post.post_author WHERE users.user_credential_number = ?;

@@ -1,7 +1,7 @@
 import path from 'path';
 import multer from 'multer';
 import sharp from 'sharp';
-
+import fs from 'fs';
 const __dirname = (process.platform === "win32")
         ? path.resolve()
         : path.dirname(new URL(import.meta.url).pathname);
@@ -74,9 +74,21 @@ const productImageStorage = multer.diskStorage({
 
 const uploadProductImage = multer({ storage: productImageStorage });
 
-
+const deleteproductFile = (name) => {
+    const route = path.join(__dirname, '/private/img_products')
+    const file = route+"/"+name;
+    fs.unlink(file, (err) => {
+      if (err) {
+        // Manejar el error, posiblemente llamar a next(err) si estás dentro de un middleware
+        console.error("No se pudo eliminar el archivo: ", err);
+      } else {
+        // El archivo fue eliminado
+        console.log("Archivo eliminado con éxito");
+      }
+    });
+  };
 // Exportar ambas configuraciones de Multer
-export { uploadProfile, uploadProductImage, uploadPostImage, convertToJPEG };
+export { uploadProfile, uploadProductImage, uploadPostImage, convertToJPEG, deleteproductFile };
 
 
 
