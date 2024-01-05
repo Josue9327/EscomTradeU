@@ -32,7 +32,7 @@ const deletePost = async (req, res) => {
     const post_author = req.user.user_credential_number;
 
     // Verificar si el post pertenece al usuario actual antes de permitir el borrado
-    const result = await pool.query('SELECT * FROM post WHERE id = ? AND post_author = ?', [postId, post_author]);
+    const result = await pool.query('DELETE * FROM post WHERE id = ? AND post_author = ?', [postId, post_author]);
 
     if (result.length === 0) {
         // Si el post no pertenece al usuario actual, devuelve un error
@@ -40,14 +40,14 @@ const deletePost = async (req, res) => {
     }
 
     // Borrar el post
-    pool.query('DELETE FROM post WHERE id = ?', [postId], (error, results) => {
+    pool.query('DELETE FROM post WHERE id = ? AND post_author = ?', [postId, post_author], (error, results) => {
         if (error) {
             console.error('Error al borrar el post:', error);
             return res.status(500).json({ error: 'Error interno del servidor' });
         }
 
         // Envía una respuesta exitosa
-        return res.status(200).json({ message: 'Post borrado exitosamente' });
+        res.redirect("/mispost");
     });
 };
 export default {

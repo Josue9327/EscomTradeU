@@ -7,7 +7,11 @@ block content2
                             img.author-photo(src='/imagen/' + post.post_author + '.jpg', alt="Foto del autor")
                             .post-info
                                 .author-name #{post.autor + " " + post.autor_lastname}
-                                .post-date #{post.post_date}
+                                .post-date #{post.post_date}          
+                            form.formpost(action="/editar_post/" + post.id method="get")
+                                button(type="submit") Editar post
+                            form.formpost(action="/borrar_post/" + post.id method="get")
+                                button(type="submit") Eliminar post 
                         .post-description #{post.post_description}
                         if post.post_img != 'NULL'
                             .post-content
