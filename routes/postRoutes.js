@@ -9,4 +9,5 @@ function generateUniqueId(req, res, next) {
     next();
 }
 router.post('/publicar', generateUniqueId, uploadPostImage.single('imageUpload'),postControllers.post);
+router.delete('/borrar/:postId', ensureAuthenticated, postControllers.deletePost);
 export default router;
