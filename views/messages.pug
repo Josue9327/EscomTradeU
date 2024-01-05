@@ -19,9 +19,9 @@ block content2
                                 input(id="user_contact" hidden value=userchat)
                             .messages-message#messageContainer
                             .message-newmessage
-                                .formcontenedor
-                                    form.formulario-newmesage#message-form(method="post", action="/buscar")
-                                        textarea.input-busqueda(type="search" id="message" placeholder="Mensaje..." aria-label="Search")
-                                        input.boton-busqueda(type="submit" value="Enviar")
+                            .formcontenedor
+                                form.formulario-newmesage#message-form(method="post")
+                                    textarea.input-busqueda(type="search" id="message" placeholder="Mensaje..." aria-label="Search")
+                                    input.boton-busqueda(type="submit" value="Enviar")
                     else
                         .messages-content

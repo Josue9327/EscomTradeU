@@ -6,13 +6,14 @@ const socketControllers = (io) => {
         socket.on('joinRoom', async (data) => {
             const messages = await getMessagesForRoom(data);
             socket.join(data.roomId);
+            console.log(messages);
             socket.emit('messageHistory', messages);
         });
         async function getMessagesForRoom(data) {
             return new Promise((resolve, reject) => {
                 pool.query(
                     'SELECT m.message, m.created_at, m.sender_id, m.receiver_id FROM messages m WHERE (m.sender_id = ? AND m.receiver_id = ?) OR (m.sender_id = ? AND m.receiver_id = ?) ORDER BY m.created_at ASC',
-                    [data.userid, data.user_contact, data.user_contact, data.userid],
+                    [data.sender_id, data.receiver_id, data.receiver_id, data.sender_id],
                     (error, results) => {
                         if (error) {
                             console.log(error);
@@ -38,7 +39,7 @@ const socketControllers = (io) => {
     function saveMessage(data) {
         pool.query(
             'INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)', 
-            [data.userid, data.user_contact, data.message],
+            [data.sender_id, data.receiver_id, data.message],
             (error, results) => {
                 if (error) {
                     console.log(error);

@@ -2,12 +2,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const socket = io();
-    const userid = document.getElementById('user_id').value;
-    const user_contact = document.getElementById('user_contact').value;
-    const roomId = [userid, user_contact].sort().join('_');
+    const sender_id = document.getElementById('user_id').value;
+    const receiver_id = document.getElementById('user_contact').value;
+    const roomId = [sender_id, receiver_id].sort().join('_');
     const data = {
-        userid,
-        user_contact,
+        sender_id,
+        receiver_id,
         roomId
     }
     socket.on('connect', () => {
@@ -22,21 +22,23 @@ document.addEventListener('DOMContentLoaded', () => {
     messageForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const message = document.querySelector('#message').value;
-        socket.emit('sendMessage', { room: roomId, message: message,  userid, user_contact});
+        socket.emit('sendMessage', { room: roomId, message: message,  sender_id, receiver_id});
     });
     socket.on('messageHistory', (data) => {
-        console.log(data);
         if(data){
             data.forEach((data) => {
+                console.log(data);
                 displayMessage(data);
             });
         }
     });
     function displayMessage(data) {
-        console.log(data);
+        const sender = data.sender_id;
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message');
-        if (userid === data.senderId) { // Asumiendo que 'userId' es el ID del usuario actual
+        console.log(sender);
+        console.log(sender_id);
+        if (sender_id == sender) { // Asumiendo que 'userId' es el ID del usuario actual
             messageDiv.classList.add('sender');
         } else {
             messageDiv.classList.add('receiver');
