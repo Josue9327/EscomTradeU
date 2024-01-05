@@ -1,5 +1,5 @@
 extends layout
-block content     
+block content    
     .contenedor
             .recuadro-principal.recuadro-grande-principal#buscadorp
                 .formcontenedor
@@ -8,7 +8,7 @@ block content
                         input.boton-busqueda(type="submit" value="Buscar")
                 if results        
                     each result in results
-                        a(href="/buscadorp/" + result.user_credential_number)
+                        a(href="/" + result.user_credential_number)
                                                                                                                                                                                                                                                                                                                                                              
                 else
                     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
@@ -45,24 +45,24 @@ block content
                                         img.category-image(src='img/alimentos.png', alt="Imagen de la publicación" )
                                     
                                 td.category-container
-                                    button(type='button', onclick='mostrarProductos("Alimentos")') 
+                                    button(type='button', onclick='mostrarProductos("Bebidas")') 
                                         h2.category  Bebidas
                                         img.category-image(src='img/bebida.png', alt="Imagen de la publicación" )
                                 td
-                                    button(type='button', onclick='mostrarProductos("Alimentos")') 
+                                    button(type='button', onclick='mostrarProductos("Papeleria")') 
                                         h2.category  Papeleria
                                         img.category-image(src='img/papeleria.png', alt="Imagen de la publicación" )        
                             tr.trcategory
                                 td.category-container
-                                    button(type='button', onclick='mostrarProductos("Alimentos")') 
+                                    button(type='button', onclick='mostrarProductos("Videojuegos")') 
                                         h2.category  Videojuegos
                                         img.category-image(src='img/videojuegos.png', alt="Imagen de la publicación" )
                                 td.category-container
-                                    button(type='button', onclick='mostrarProductos("Alimentos")') 
+                                    button(type='button', onclick='mostrarProductos("Servicios")') 
                                         h2.category  Servicios
                                         img.category-image(src='img/servicios.png', alt="Imagen de la publicación" )
                                 td
-                                    button(type='button', onclick='mostrarProductos("Alimentos")') 
+                                    button(type='button', onclick='mostrarProductos("Otros")') 
                                         h2.category  Otros
                                         img.category-image(src='img/otros.png', alt="Imagen de la publicación" )  
                 h1.titleproduct                                        
@@ -70,4 +70,5 @@ block content
                 if error_msg.length > 0
                     .error
                         each err in error_msg
-                            p= err                                    
+                            p= err
+    script(src='js/main.js')                                     
