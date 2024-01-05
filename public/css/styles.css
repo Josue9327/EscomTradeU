@@ -104,7 +104,6 @@ form {
     margin: auto; /* Centra el formulario horizontalmente */
     width: 25rem; /* Ancho fijo para el formulario */
     padding: 20px; /* Espaciado interno */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra opcional para resaltar el formulario */
 }
 
 .login h1 {
@@ -1129,6 +1128,13 @@ a:hover .not-name{
     justify-content: center;
     box-shadow: none;
     width: 100%;
+}
+.formpost{
+    width: auto;
+    display: flex;
+    justify-content: left;
+    border: 0;
+    margin: 1%;
 }
 /* Estiliza la barra de desplazamiento en su totalidad */
 ::-webkit-scrollbar {

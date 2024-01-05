@@ -1,0 +1,20 @@
+extends menulayout
+block content2                         
+            .recuadro-principal.recuadro-grande-subprincipal#cargaprincipal
+                    .formhead
+                        h1 Editar Post
+                        form.formularioVolver(action="/mispost" method="get")
+                            button.button#Volver(type="submit") Volver           
+                    .product-container
+                            table.product
+                                form(action="/editar_post/" + post.id method="post")
+                                    tr.trproduct
+                                        td.product-caracteristic
+                                            p Descripcion:
+                                        td.product-info 
+                                            textarea(name="postContent", cols="30", rows="10", placeholder="Nueva publicacion")   
+                                                =post.post_description
+                                    tr.trproduct        
+                                        td.product-info   
+                                        td.product-info           
+                                            button.button#producto_agregar(type="submit") Guardar                          
