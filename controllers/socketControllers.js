@@ -6,7 +6,6 @@ const socketControllers = (io) => {
         socket.on('joinRoom', async (data) => {
             const messages = await getMessagesForRoom(data);
             socket.join(data.roomId);
-            console.log(messages);
             socket.emit('messageHistory', messages);
         });
         async function getMessagesForRoom(data) {
