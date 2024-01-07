@@ -42,22 +42,16 @@ router.get('/addproduct', ensureAuthenticated, (req, res) =>{
 router.post('/addproduct', generateUniqueId, uploadProductImage.single('imageUpload'), productControllers.post);
 router.get('/miproducto_borrar/:producto', ensureAuthenticated, (req, res) =>{
     const id = req.params.producto;
-
-    // Primero, obtiene el nombre de la imagen de la base de datos
     pool.query('SELECT product_imagenroute FROM products WHERE product_user = ? AND id = ?', 
         [req.user.user_credential_number, id], (error, results) => {
         if (error) {
             return res.status(500).json({ error });
         }
-
-        // Si no se encuentra el producto, tal vez quieras manejar este caso también
         if (results.length === 0) {
             return res.status(404).json({ message: "Producto no encontrado" });
         }
 
         const imgname = results[0].product_imagenroute;
-
-        // Ahora borra la entrada de la base de datos
         pool.query('DELETE FROM products WHERE product_user = ? AND id = ?', 
             [req.user.user_credential_number, id], (error, deleteResults) => {
             if (error) {
