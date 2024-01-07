@@ -97,6 +97,62 @@ router.get('/buscarproductos', ensureAuthenticated, (req, res) =>{
     const imgname = req.user.user_credential_number + '.jpg';
     const id = req.params.producto;
     res.render("buscadorp", { activePage: 'buscarp', img_route: imgname, error_msg});
-
+});
+router.post('/buscarp', ensureAuthenticated, (req, res) =>{
+    const error_msg = req.flash('error'); // Obtiene el mensaje de error
+    var imgname;
+    // Comprobar si el usuario está en sesión
+    if (req.user) {
+        imgname = req.user.user_credential_number + '.jpg';
+    } else {
+        // Define un valor predeterminado o maneja el caso de no sesión
+        imgname = 'default.png'; // O cualquier imagen por defecto que tengas
+    }
+    
+    const searchTerm = req.body.term;
+    // Utilizar el pool para realizar la consulta
+    pool.query(
+        'SELECT p.*, u.user_name, u.user_lastname FROM products p JOIN users u ON p.product_user = u.user_credential_number WHERE p.product_name LIKE ? OR p.product_category LIKE ? OR p.product_description LIKE ?;', 
+        [`%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            const formattedResults = results.map(products => {
+                // Suponiendo que 'post_date' es tu columna TIMESTAMP
+                const formattedDate = moment(products.product_added).tz('America/Mexico_City').format('LLLL');
+                // Retornar un nuevo objeto con la fecha formateada
+                return {
+                    ...products,
+                    product_added: formattedDate
+                };
+            });
+            res.render("buscadorp", { activePage: 'buscarp', img_route: imgname, products: formattedResults, error_msg });
+        }
+    );
+}); 
+router.get('/categoria/:categoria', ensureAuthenticated, (req, res) =>{
+    const error_msg = req.flash('error'); // Obtiene el mensaje de error
+    const imgname = req.user.user_credential_number + '.jpg';
+    const categoria = req.params.categoria;
+    pool.query(
+        'SELECT p.*, u.user_name, u.user_lastname FROM products p JOIN users u ON p.product_user = u.user_credential_number WHERE p.product_category LIKE ?', 
+        [`%${categoria}%`],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            const formattedResults = results.map(products => {
+                // Suponiendo que 'post_date' es tu columna TIMESTAMP
+                const formattedDate = moment(products.product_added).tz('America/Mexico_City').format('LLLL');
+                // Retornar un nuevo objeto con la fecha formateada
+                return {
+                    ...products,
+                    product_added: formattedDate
+                };
+            });
+            res.render("product_category", { activePage: 'buscarp', img_route: imgname, products: formattedResults, error_msg });
+        }
+    );
 });
 export default router;

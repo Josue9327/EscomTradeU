@@ -28,5 +28,5 @@ block content
                           form.formularioPublicar(action="/anadircontacto" method="post")
                             input(name="id_contact", hidden, value=perfil.user_credential_number)
                             button#editar_perfil(type="submit") Añadir a contactos
-                        form.formularioPublicar(action="/mispost" method="get")
-                          button#editar_perfil(type="submit") Ver post publicados
+                        form.formularioPublicar(action="/messages/" + perfil.user_credential_number method="get")
+                          button#editar_perfil(type="submit") Mandar mensaje

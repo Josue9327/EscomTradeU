@@ -3,12 +3,50 @@ block content
     .contenedor
             .recuadro-principal.recuadro-grande-principal#buscadorp
                 .formcontenedor
-                    form.formulario-busqueda(method="post", action="/buscar")
+                    form.formulario-busqueda(method="post", action="/buscarp")
                         input.input-busqueda(type="search" name="term" placeholder="Buscar..." aria-label="Search")
                         input.boton-busqueda(type="submit" value="Buscar")
-                if results        
-                    each result in results
-                        a(href="/" + result.user_credential_number)
+                if products        
+                    each product in products
+                        .product-container
+                            table.product.edit_product
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Nombre:
+                                    td.product-info    
+                                        p=product.product_name
+                                    td.product-info(rowspan="6") 
+                                        img.product-photo(src='/img_product/' + product.product_imagenroute)
+                                    td.product-options(rowspan="6")             
+                                        form.formularioPublicar#producto_editar(action="/perfil/" + product.product_user method="get")
+                                            button(type="submit")
+                                                p Ver perfil de
+                                                p=product.user_name
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Cantidad:
+                                    td.product-info     
+                                        p=product.product_quantity
+                                tr.trproduct        
+                                    td.product-caracteristic    
+                                        p Precio:
+                                    td.product-info     
+                                        p=product.product_price 
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Descripcion:
+                                    td.product-info     
+                                        p=product.product_description
+                                tr.trproduct        
+                                    td.product-caracteristic
+                                        p Categoria:
+                                    td.product-info     
+                                        p=product.product_category
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Fecha de agregación:
+                                    td.product-info       
+                                        p=product.product_added
                                                                                                                                                                                                                                                                                                                                                              
                 else
                     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
@@ -40,29 +78,28 @@ block content
                         table.tablecategory
                             tr.trcategory
                                 td.category-container 
-                                    button(type='button', onclick='mostrarProductos("Alimentos")')
+                                    a(href='categoria/alimentos')
                                         h2.category  Alimentos
                                         img.category-image(src='img/alimentos.png', alt="Imagen de la publicación" )
-                                    
                                 td.category-container
-                                    button(type='button', onclick='mostrarProductos("Bebidas")') 
+                                    a(href='categoria/bebidas')
                                         h2.category  Bebidas
                                         img.category-image(src='img/bebida.png', alt="Imagen de la publicación" )
                                 td
-                                    button(type='button', onclick='mostrarProductos("Papeleria")') 
+                                    a(href='categoria/papeleria')
                                         h2.category  Papeleria
                                         img.category-image(src='img/papeleria.png', alt="Imagen de la publicación" )        
                             tr.trcategory
                                 td.category-container
-                                    button(type='button', onclick='mostrarProductos("Videojuegos")') 
+                                    a(href='categoria/videjuegos')
                                         h2.category  Videojuegos
                                         img.category-image(src='img/videojuegos.png', alt="Imagen de la publicación" )
                                 td.category-container
-                                    button(type='button', onclick='mostrarProductos("Servicios")') 
+                                    a(href='categoria/servicios')
                                         h2.category  Servicios
                                         img.category-image(src='img/servicios.png', alt="Imagen de la publicación" )
                                 td
-                                    button(type='button', onclick='mostrarProductos("Otros")') 
+                                    a(href='categoria/otros') 
                                         h2.category  Otros
                                         img.category-image(src='img/otros.png', alt="Imagen de la publicación" )  
                 h1.titleproduct                                        

@@ -2,7 +2,7 @@ import pool from '../config/databaseConfig.js';
 const socketControllers = (io) => {
     io.on('connection', (socket) => {
         // Acceder a la sesión de Express
-        console.log("Usuario conectado");
+        //console.log("Usuario conectado");
         socket.on('joinRoom', async (data) => {
             const messages = await getMessagesForRoom(data);
             socket.join(data.roomId);

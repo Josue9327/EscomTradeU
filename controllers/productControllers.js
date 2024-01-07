@@ -6,7 +6,6 @@ const post = async (req, res) => {
     const dateToStore = today.toISOString().split('T')[0]; 
     const product_user = req.user.user_credential_number;
     var file;
-    console.log(req.file);
     if(req.file){
         const filename = product_user + "_" + timestamp;
         const fileExtension = '.jpg'; // Mantener la extensión original del archivo
