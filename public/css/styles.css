@@ -1167,3 +1167,54 @@ a:hover .not-name{
     width: 30rem;
 }
 /*SELECT users.user_credential_number, users.user_name, users.user_lastname, post.post_description, post.post_date FROM users INNER JOIN post ON users.user_credential_number = post.post_author WHERE users.user_credential_number = ?;
+*/
+.rating_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .rating {
+    position: relative;
+    display: flex;
+    flex-direction:row-reverse;
+    padding: 30px 40px;
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 4px;
+    border-radius: 30px;
+    background:#fff;
+  }
+    .rating input{
+        position: relative;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        
+
+    }
+    .rating input::before {
+        content: '\f005';
+        position: absolute;
+        font-family: fontAwesome;
+        font-size: 20px;
+        color: #ddd;
+        transition: .5s;
+
+    }
+
+    .rating input:hover ~ input::before,
+    .rating input:hover::before,
+    .rating input:checked ~ input::before,
+    .rating input:checked::before{
+        color: var(--c);
+    }

@@ -45,7 +45,9 @@ app.use(helmet.contentSecurityPolicy({
             "https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js",
             "https://code.jquery.com/jquery-3.3.1.slim.min.js",
             "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
-            "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"],  
+            "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
+            "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"],
+            
         // otras directivas...
     }
 }));
