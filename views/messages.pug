@@ -7,7 +7,7 @@ block content2
                             each contact in contacts
                                 a.contact-container(href="/messages/" + contact.user_credential_number + "#cargaprincipal")
                                     img(src='/imagen/' + contact.user_credential_number + '.jpg')
-                                    p=contact.user_name + " " + contact.user_lastname                                                                                             
+                                    p=contact.user_name + " " + contact.user_lastname                                                                                       
                     if userchat != 0
                         script(src="/socket.io/socket.io.js")
                         script(src="/js/chat.js")  
@@ -17,6 +17,10 @@ block content2
                                 h5.contact-name=contactDetails.user_name + " " + contactDetails.user_lastname
                                 input(id="user_id" hidden value=userid)
                                 input(id="user_contact" hidden value=userchat)
+                                .user-status#status-menu
+                                        - var userState = contactDetails.user_state
+                                        div(class=userState == 0 ? 'gray-circle' : userState == 1 ? 'green-circle' : userState == 2 ? 'red-circle' : '')
+                                        span #{userState == 0 ? 'Desconectado' : userState == 1 ? 'En línea' : userState == 2 ? 'Ocupado' : ''}      
                             .messages-message#messageContainer
                             .message-newmessage
                             .formcontenedor

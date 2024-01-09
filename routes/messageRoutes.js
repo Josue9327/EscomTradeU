@@ -26,7 +26,7 @@ router.get('/messages/:user_id', ensureAuthenticated, async (req, res) => {
 
         // Obtener detalles del contacto específico
         const contactInfo = await queryPromise(pool, 
-            'SELECT user_name, user_lastname FROM users WHERE user_credential_number = ?', 
+            'SELECT user_name, user_lastname, user_state FROM users WHERE user_credential_number = ?', 
             [userId]);
 
         res.render("messages", {

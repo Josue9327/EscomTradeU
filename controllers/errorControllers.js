@@ -18,7 +18,7 @@ const error500 =(err, req, res, next) => {
         // Define un valor predeterminado o maneja el caso de no sesión
         imgname = 'user_img_default'; // O cualquier imagen por defecto que tengas
     }
-    res.status(500).render('500', { img_route: imgname } );
+    res.status(500).render('500', { img_route: imgname, err } );
 };
 export default {
     error404,
