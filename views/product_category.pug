@@ -18,10 +18,20 @@ block content
                                     td.product-info(rowspan="6") 
                                         img.product-photo(src='/img_product/' + product.product_imagenroute)
                                     td.product-options(rowspan="6")             
-                                        form.formularioPublicar#producto_editar(action="/perfil/" + product.product_user method="get")
+                                        form.boton(action="/perfil/" + product.product_user method="get")
                                             button(type="submit")
-                                                p Ver perfil de
+                                                p perfil de
                                                 p=product.user_name
+                                    if product.EstadoEnCarrito == 'No En Carrito'
+                                        td.product-options(rowspan="6")                                                 
+                                            form.boton(action="/add_carrito/" + product.id method="get")
+                                                button(type="submit")
+                                                    p Agregar a mi carrito
+                                    else 
+                                        td.product-options(rowspan="6")                                                 
+                                            form.boton(action="/carrito" method="GET")
+                                                button(type="submit")
+                                                    p Ver en carrito     
                                 tr.trproduct
                                     td.product-caracteristic
                                         p Cantidad:

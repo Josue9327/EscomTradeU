@@ -1,0 +1,22 @@
+extends menulayout
+block content2                         
+            .recuadro-principal.recuadro-grande-subprincipal#cargaprincipal
+                    .formhead
+                        h1 Mis Pedidos
+                    form.formularioPublicar(action="/comprar" method="Post")
+                        if pedidos.length > 0
+                            each pedido in pedidos
+                                div
+                                    h2 Pedido ID: #{pedido.PedidoID}
+                                    p Fecha del Pedido: #{pedido.FechaHoraPedido}
+                                    p Estado: #{pedido.Estado}
+                                    p Información de Envío: #{pedido.InformacionEnvio}
+                                    each producto in pedido.Productos
+                                        div
+                                            p Nombre del Producto: #{producto.Nombre}
+                                            p Descripción: #{producto.Descripcion}
+                                            p Cantidad: #{producto.Cantidad}
+                                            p Precio Unitario: #{producto.PrecioUnitario}
+                                    p Total del Pedido: $#{pedido.TotalPedido.toFixed(2)}
+                        else
+                            h1 No tienes pedidos pendientes    

@@ -1,4 +1,4 @@
-import mysql from "mysql";
+import mysql from "mysql2";
 const pool = mysql.createPool({
     connectionLimit: 100,
     host: 'localhost',
@@ -6,5 +6,5 @@ const pool = mysql.createPool({
     database: 'escomtradeusdatabase',
     user: 'root',
     password: '93277239aA.'
-}); 
+});
 export default pool;

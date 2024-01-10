@@ -8,7 +8,7 @@ block content
                         input.boton-busqueda(type="submit" value="Buscar")
                 if products        
                     each product in products
-                        .product-container
+                        a.product-container#buscador(href="/producto/" + product.id)
                             table.product.edit_product
                                 tr.trproduct
                                     td.product-caracteristic
@@ -16,17 +16,17 @@ block content
                                     td.product-info    
                                         p=product.product_name
                                     td.product-info(rowspan="6") 
-                                        img.product-photo(src='/img_product/' + product.product_imagenroute)
-                                    td.product-options(rowspan="6")             
-                                        form.formularioPublicar#producto_editar(action="/perfil/" + product.product_user method="get")
-                                            button(type="submit")
-                                                p Ver perfil de
-                                                p=product.user_name
+                                        img.product-photo(src='/img_product/' + product.product_imagenroute)     
                                 tr.trproduct
                                     td.product-caracteristic
                                         p Cantidad:
                                     td.product-info     
                                         p=product.product_quantity
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Vendedor:
+                                    td.product-info     
+                                        p=product.user_name + ' ' + product.user_lastname
                                 tr.trproduct        
                                     td.product-caracteristic    
                                         p Precio:

@@ -4,7 +4,7 @@ block content2
                     .product-container#newProduct
                         .author-info
                             .product-options
-                                form.formularioPublicar#producto_agregar(action="/addproduct#cargaprincipal" method="get")
+                                form(action="/addproduct#cargaprincipal" method="get")
                                     button.button#producto_agregar(type="submit") Agregar producto
 
                     each product in products

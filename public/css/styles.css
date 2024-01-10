@@ -251,6 +251,7 @@ select.custom-combobox:focus {
 }
 .contenedor {
     display: flex; /* Usa Flexbox dentro del contenedor */
+    justify-content: center;
     height: 100%;
 }
 
@@ -391,7 +392,6 @@ button.btn-primary:hover {
 }
 .recuadro-grande-principal#buscador{
     width: 50%;
-    margin-left:25%;
 }
 .post-container {
     border: 1px solid #ddd;
@@ -466,6 +466,9 @@ a:hover .menu-name{
     flex-grow: 1; /* Hace que solo el input crezca */
     background-color: black;
     color: white;
+}
+.boton{
+    width: 10rem;
 }
 .boton-menu-lateral:hover{
     background-color: white;
@@ -763,7 +766,7 @@ a:hover .menu-name{
     display: flex;
 }
 /*productos*/
-.product-container {
+.especific-product{
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -773,7 +776,26 @@ a:hover .menu-name{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
+    width: 100%;
 }
+.product-container{
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 1%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+}
+.product-container#buscador:hover{
+    background-color: #000;
+    color: white;
+}   
 .product-photo{
     width: 10rem;  /* o el ancho deseado */
     height: 10rem; /* o la altura deseada */
@@ -801,8 +823,7 @@ a:hover .menu-name{
 }
 .product-info p{
     max-height: 8rem;
-    max-width: 20rem;
-    width: 20rem;
+    width: auto;
 }
 
 .trpproduct{
@@ -814,7 +835,7 @@ a:hover .menu-name{
     font-size: 1rem;
     margin-bottom: 1%;
     resize: none;
-    width: 100%;
+    width: 75%;
 }
 
 .edit_product{
@@ -853,6 +874,11 @@ a:hover .menu-name{
     flex-direction: column;
     align-items: center;
     width: 100%; /* Ajustar según sea necesario */
+    padding: 0;
+}
+
+.formularioPublicar button{
+    width: 100%;
 }
 .product-name textarea {
     flex-grow: 1; /* Permite que los input y textarea ocupen el espacio disponible */
@@ -1022,7 +1048,8 @@ button#Volver:hover{
     background-color: white;
 }
 .recuadro-grande-principal#buscadorp{
-    width: 100%;
+    width: 75%;
+
 }
 .titleproduct{
     border-bottom: solid 2px;
@@ -1165,6 +1192,9 @@ a:hover .not-name{
 }
 .errorContainer img{
     width: 30rem;
+}
+.product-options{
+    width: 50%;
 }
 /*SELECT users.user_credential_number, users.user_name, users.user_lastname, post.post_description, post.post_date FROM users INNER JOIN post ON users.user_credential_number = post.post_author WHERE users.user_credential_number = ?;
 */

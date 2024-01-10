@@ -1,0 +1,55 @@
+extends menulayout
+block content2                         
+            .recuadro-principal.recuadro-grande-subprincipal#cargaprincipal
+                    .formhead
+                        h1 Carrito
+                    form.formularioPublicar(action="/comprar" method="Post")
+                        if products.length > 0  
+                            each product in products
+                                .product-container
+                                    table.product.edit_product
+                                        tr.trproduct
+                                            td.product-caracteristic
+                                                p Nombre:
+                                            td.product-info    
+                                                p=product.product_name
+                                            td.product-info(rowspan="5") 
+                                                img.product-photo(src='/img_product/' + product.product_imagenroute)
+                                            td.product-info(rowspan="5")                                                
+                                                a(href="/delete_carrito/" + product.id)
+                                                        p Eliminr de mi Carrito
+                                        tr.trproduct        
+                                            td.product-caracteristic    
+                                                p Estudiante que lo vende:
+                                            td.product-info     
+                                                p #{product.user_name + " "+ product.user_lastname}
+                                        tr.trproduct        
+                                            td.product-caracteristic    
+                                                p Precio:
+                                            td.product-info     
+                                                p $#{product.PrecioUnitario}
+                                        tr.trproduct        
+                                            td.product-caracteristic    
+                                                p Cantidad:
+                                            td.product-info     
+                                                p #{product.Cantidad}            
+                            .product-container
+                                    table.product.edit_product
+                                        tr.trproduct        
+                                            td.product-caracteristic    
+                                                p Fecha de entrega deseada:
+                                            td.product-info
+                                                input.input(type="date" name="fechaEntrega")
+                                        tr.trproduct        
+                                            td.product-caracteristic    
+                                                p Hora de entrega deseada:
+                                            td.product-info
+                                                input.input(type="time" name="horaEntrega" min="07:00" max="21:30") 
+                                        tr.trproduct        
+                                            td.product-caracteristic    
+                                                p Lugar deseada:
+                                            td.product-info 
+                                                input.input(type="text" name="lugarEntrega")
+                            button.button#producto_agregar(type="submit") Comprar
+                        else
+                            h1 Agrega algunos productos a tu carrito       

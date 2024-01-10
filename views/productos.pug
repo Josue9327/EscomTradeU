@@ -1,1 +1,50 @@
 extends menulayout
+block content2                         
+            .recuadro-principal.recuadro-grande-principal#cargaprincipal
+                    .product-container
+                            table.product.edit_product
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Nombre:
+                                    td.product-info    
+                                        p=product.product_name
+                                    td.product-info(rowspan="6") 
+                                        img.product-photo(src='/img_product/' + product.product_imagenroute) 
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Cantidad:
+                                    td.product-info     
+                                        p=product.product_quantity
+                                tr.trproduct        
+                                    td.product-caracteristic    
+                                        p Precio:
+                                    td.product-info     
+                                        p=product.product_price 
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Descripcion:
+                                    td.product-info     
+                                        p=product.product_description
+                                tr.trproduct        
+                                    td.product-caracteristic
+                                        p Categoria:
+                                    td.product-info     
+                                        p=product.product_category
+                                tr.trproduct
+                                    td.product-caracteristic
+                                        p Fecha de agregación:
+                                    td.product-info       
+                                        p=product.product_added
+                                form(action="/agregar-al-carrito" method="POST")        
+                                    tr.trproduct        
+                                        td.product-caracteristic
+                                            p Cantidad deseada: 
+                                        td.product-caracteristic
+                                            input.input(type="number" max=product.product_quantity min="1" required name="cantidad")
+                                            input.input(hidden value=product.id name="productoID")        
+                                            input.input(hidden value=product.product_price name="precio")     
+                                    tr.trproduct        
+                                        td.product-caracteristic(colspan="3")
+                                            button.button#producto_agregar(type="submit") Agregar a mi carrito                                                
+                                
+                    

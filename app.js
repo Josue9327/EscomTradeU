@@ -9,6 +9,8 @@ import indexRoutes from './routes/indexRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import loginRoutes from './routes/loginRoutes.js';
 import postRoutes from './routes/postRoutes.js';
+import ventasRoutes from './routes/ventasRoutes.js';
+import carritoRoutes from './routes/carritoRoutes.js'
 import prodcutsRoutes from './routes/productsRoutes.js';
 import messagesRoutes from './routes/messageRoutes.js';
 import errorController from './controllers/errorControllers.js';
@@ -69,6 +71,8 @@ app.use('/',loginRoutes);
 app.use('/',postRoutes);
 app.use('/',prodcutsRoutes);
 app.use('/',messagesRoutes);
+app.use('/',carritoRoutes);
+app.use('/',ventasRoutes);
 app.get('/numero-sesiones', (req, res) => {
     const sessionStore = req.sessionStore;
     sessionStore.all((error, sessions) => {
