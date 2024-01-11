@@ -4,7 +4,7 @@ block content
             .recuadro-principal.recuadro-grande-principal#buscador
                 .formcontenedor
                     form.formulario-busqueda(method="post", action="/buscar")
-                        input.input-busqueda(type="search" name="term" placeholder="Buscar..." aria-label="Search")
+                        input.input-busqueda(type="search" name="term" placeholder="Buscar..." aria-label="Search" required)
                         input.boton-busqueda(type="submit" value="Buscar")
                 if results        
                     each result in results

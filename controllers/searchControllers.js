@@ -13,8 +13,8 @@ const search = async (req, res) => {
     const searchTerm = req.body.term;
     // Utilizar el pool para realizar la consulta
     pool.query(
-        'SELECT user_name, user_lastname, user_gender, user_credential_number, user_state FROM users WHERE user_name LIKE ?', 
-        [`%${searchTerm}%`],
+        'SELECT user_name, user_lastname, user_gender, user_credential_number, user_state FROM users WHERE user_name LIKE ? OR user_lastname LIKE ?', 
+        [`%${searchTerm}%`, `%${searchTerm}%`],
         (error, results) => {
             if (error) {
                 return res.status(500).json({ error });

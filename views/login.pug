@@ -2,7 +2,7 @@ extends layout
 block content
     .login
         h1 Login
-            form(action="login", method="post")
+            form.form-login(action="login", method="post")
                 input.input(type="text" name="username" placeholder="Numero de boleta" required="required")
                 input.input(type="password" name="password" placeholder="Password" required="required")
                 button(type="submit" class="btn btn-primary btn-block btn-large") Ingresar

@@ -68,8 +68,6 @@ router.post('/comprar', ensureAuthenticated, async (req, res) => {
         const lugarEntrega = req.body.lugarEntrega;
         const usuarioID = req.user.id; // Asegúrate de obtener el ID del usuario correctamente
         const carritoID = req.session.carritoID; // Obtener el ID del carrito desde la sesión
-        console.log(fechaHoraEntrega);
-        console.log(lugarEntrega);
         if (!carritoID) {
             return res.status(400).send('No hay un carrito activo.');
         }
@@ -197,7 +195,6 @@ function crearPedidoConDetalles(usuarioID, detallesCarrito, fechaHoraEntrega, lu
             }
             const pedidoID = results.insertId;
             detallesCarrito.forEach(product => {
-                console.log(product);
                 pool.query('INSERT INTO DetallePedido (PedidoID, ProductoID, Cantidad, PrecioUnitario) VALUES (?, ?, ?, ?)',
                     [pedidoID, product.ProductoID, product.Cantidad, product.PrecioUnitario],
                     (error, results) => {

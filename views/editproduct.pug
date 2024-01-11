@@ -28,12 +28,18 @@ block content2
                                         td.product-caracteristic
                                             p Categoria:
                                         td.product-info 
-                                            input.input(type="text",name="product_category", value=products.product_category)
+                                            select.input(name='product_category')
+                                                option(value='Bebidas' selected=products.product_category === 'Bebidas') Bebidas
+                                                option(value='Alimentos' selected=products.product_category === 'Alimentos') Alimentos
+                                                option(value='Videojuegos' selected=products.product_category === 'Videojuegos') Videojuegos
+                                                option(value='Servicios' selected=products.product_category === 'Servicios') Servicios
+                                                option(value='Papeleria' selected=products.product_category === 'Papeleria') Papeleria
+                                                option(value='Otros' selected=products.product_category === 'Otros') Otros
                                     tr.trproduct
                                         td.product-caracteristic
                                             p Descripcion:
                                         td.product-info 
-                                            textarea(name="product_description", cols="30", rows="10", placeholder=products.product_description)
+                                            textarea(name="product_description", cols="30", rows="10") #{products.product_description}
                                     tr.trproduct        
                                         td.product-info   
                                         td.product-info           

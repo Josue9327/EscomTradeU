@@ -4,11 +4,11 @@ block content
             .recuadro-principal.recuadro-grande-principal#buscadorp
                 .formcontenedor
                     form.formulario-busqueda(method="post", action="/buscarp")
-                        input.input-busqueda(type="search" name="term" placeholder="Buscar..." aria-label="Search")
+                        input.input-busqueda(type="search" name="term" placeholder="Buscar..." aria-label="Search" required)
                         input.boton-busqueda(type="submit" value="Buscar")
                 if products        
                     each product in products
-                        a.product-container#buscador(href="/producto/" + product.id)
+                        a.product-container#buscador(href="/producto/" + product.id + "#cargaprincipal")
                             table.product.edit_product
                                 tr.trproduct
                                     td.product-caracteristic

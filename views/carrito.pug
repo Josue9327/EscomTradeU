@@ -39,17 +39,17 @@ block content2
                                             td.product-caracteristic    
                                                 p Fecha de entrega deseada:
                                             td.product-info
-                                                input.input(type="date" name="fechaEntrega")
+                                                input.input(type="date" name="fechaEntrega" required)
                                         tr.trproduct        
                                             td.product-caracteristic    
                                                 p Hora de entrega deseada:
                                             td.product-info
-                                                input.input(type="time" name="horaEntrega" min="07:00" max="21:30") 
+                                                input.input(type="time" name="horaEntrega" min="07:00" max="21:30" required) 
                                         tr.trproduct        
                                             td.product-caracteristic    
                                                 p Lugar deseada:
                                             td.product-info 
-                                                input.input(type="text" name="lugarEntrega")
+                                                input.input(type="text" name="lugarEntrega" required)
                             button.button#producto_agregar(type="submit") Comprar
                         else
                             h1 Agrega algunos productos a tu carrito       

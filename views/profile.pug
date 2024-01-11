@@ -21,15 +21,15 @@ block content
                       // Botones de acción
                       .perfil-options
                         if perfil.ContactoExistente
-                          form.formularioPublicar(action="/eliminarcontacto" method="post")
+                          form(action="/eliminarcontacto" method="post")
                             input(name="id_contact", hidden, value=perfil.user_credential_number)
-                            button#editar_perfil(type="submit") Eliminar de mis contactos
+                            button.button#producto_eliminar(type="submit") Eliminar de mis contactos
                         else
-                          form.formularioPublicar(action="/anadircontacto" method="post")
+                          form(action="/anadircontacto" method="post")
                             input(name="id_contact", hidden, value=perfil.user_credential_number)
-                            button#editar_perfil(type="submit") Añadir a contactos
-                        form.formularioPublicar(action="/messages/" + perfil.user_credential_number method="get")
-                          button#editar_perfil(type="submit") Mandar mensaje
+                            button.button#producto_agregar(type="submit") Añadir a contactos
+                        form(action="/messages/" + perfil.user_credential_number method="get")
+                          button.button#producto_editar(type="submit") Mandar mensaje
 
                       .rating_container
                       h1 Califica al usuario

@@ -2,7 +2,7 @@ extends layout
 block content
     div.login
         h1 Crear una cuenta
-            form(action="signup", method="post", enctype="multipart/form-data")
+            form.form-login(action="signup", method="post", enctype="multipart/form-data")
                 input.input(type="text" name="name" placeholder="Nombre" required="required")
                 input.input(type="text" name="lastname" placeholder="Apellidos" required="required")
                 input.input(type="text" name="credential_number" placeholder="Numero de boleta" required="required")

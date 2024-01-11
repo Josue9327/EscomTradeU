@@ -100,12 +100,12 @@ body {
     margin-top: 3rem;
     text-align: center; /* Alinea el texto de los elementos internos */
 }
-form {
+
+.form-login{
     margin: auto; /* Centra el formulario horizontalmente */
     width: 25rem; /* Ancho fijo para el formulario */
     padding: 20px; /* Espaciado interno */
 }
-
 .login h1 {
     color: #fff;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -115,8 +115,9 @@ form {
 
 .input{
     font-size: 13px;
+    margin-bottom: 1%;
 }
-input {
+input, select, textarea {
     width: 100%;
     margin-bottom: 10px;
     background: rgba(0, 0, 0, 0.3);
@@ -133,6 +134,21 @@ input {
 }
 input:focus {
     box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4), 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+.select-category{
+    width: 100%;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 130px;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px rgba(255, 255, 255, 0.2);
+    transition: box-shadow 0.5s ease;
 }
 .error {
     margin-top: 10px;
@@ -735,6 +751,12 @@ a:hover .menu-name{
 }
 
 /* Detalles del usuario */
+.user-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+}
 .user-details h1 {
     margin: 0;
     color: #333;
@@ -763,7 +785,7 @@ a:hover .menu-name{
     background-color: #8c3d62;
 }
 .perfil-options{
-    display: flex;
+    
 }
 /*productos*/
 .especific-product{
@@ -787,7 +809,7 @@ a:hover .menu-name{
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
     color: black;
     text-decoration: none;
@@ -807,17 +829,17 @@ a:hover .menu-name{
     width: 80%;
 }
 .product p{
-    margin: 0;
+    margin-bottom: 0.5rem;
 } 
 .product-caracteristic{
     text-align: center;
     font-weight: bold;
-    width: 25%;
+    width: 15%;
 }
 .product-info{
+    width: 30%;
     text-align: center;
     justify-content: center;
-    max-height: 10px;
     word-break: break-all;
     overflow-y: auto;
 }
@@ -829,7 +851,7 @@ a:hover .menu-name{
 .trpproduct{
     justify-content: space-around;
 }
-.product-info input, textarea{
+.product-info input, textarea, select{
     background-color: #EAD7D7;
     color: #000;
     font-size: 1rem;
@@ -860,6 +882,33 @@ a:hover .menu-name{
 }
 .button#producto_agregar:hover{
     background-color: #42b103;
+}
+.button#producto_editar{
+    padding: 10px 15px;
+    margin-top: 1%;
+    margin-right: 0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color: #0b3bb5;
+}
+.button#producto_editar:hover{
+    background-color: #222b92;
+}
+.button#producto_eliminar{
+    padding: 10px 15px;
+    margin-top: 1%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color: #8e0e05;
+}
+.button#producto_eliminar:hover{
+    background-color: #992a2a;
 }
 #file-uploadproduct {
     width: 2px;
@@ -1194,7 +1243,7 @@ a:hover .not-name{
     width: 30rem;
 }
 .product-options{
-    width: 50%;
+    width: auto;
 }
 /*SELECT users.user_credential_number, users.user_name, users.user_lastname, post.post_description, post.post_date FROM users INNER JOIN post ON users.user_credential_number = post.post_author WHERE users.user_credential_number = ?;
 */
@@ -1248,3 +1297,48 @@ a:hover .not-name{
     .rating input:checked::before{
         color: var(--c);
     }
+.pedidos-container{
+        display: flex;
+        flex-direction: column;
+}
+.pedido-options{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.pedido-container{
+    font-size: 1rem;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 1%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+}
+.pedido-caracteristic{
+    text-align: left;
+    font-weight: bold;
+    width: 15%;
+}
+.pedido-info{
+    width: 30%;
+    text-align: left;
+    justify-content: center;
+    word-break: break-all;
+    overflow-y: auto;
+}
+.pedido-menu{
+    background-color: #c55a5a;
+    margin: 1rem;
+    text-align: center;
+}
+.pedido tr, td, tbody{
+    border: solid 1px;
+}

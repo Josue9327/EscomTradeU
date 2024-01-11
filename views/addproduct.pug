@@ -26,8 +26,14 @@ block content2
                                     tr.trproduct
                                         td.product-caracteristic
                                             p Catetoria:
-                                        td.product-info 
-                                            input.input(type="text",name="product_category", placeholder="Nombre del producto")
+                                        td.product-info
+                                            select.input(name='product_category')
+                                                option(value='Bebidas') Bebidas
+                                                option(value='Alimentos') Alimentos
+                                                option(value='Videojuegos') Videojuegos
+                                                option(value='Servicios') Servicios
+                                                option(value='Papeleria') Papeleria
+                                                option(value='Otros') Otros
                                     tr.trproduct
                                         td.product-caracteristic
                                             p Descripcion:

@@ -1,0 +1,75 @@
+extends menulayout
+block content2                         
+            .recuadro-principal.recuadro-grande-subprincipal#cargaprincipal
+                    h1 Mis Compras
+                        .pedidos-container
+                            if pedidos.length > 0
+                                each pedido in pedidos
+                                    .pedido-container
+                                        table.pedido
+                                            tr.trpedido 
+                                                td.pedido-menu(colspan="2")
+                                                    h1 Informacion del pedido
+                                            tr.trpedido
+                                                td.pedido-caracteristic
+                                                    p Fecha del pedido:
+                                                td.pedido-info    
+                                                    p=pedido.FechaHoraPedido
+                                            tr.trpedido
+                                                td.pedido-caracteristic
+                                                    p Estado:
+                                                td.pedido-info     
+                                                    p=pedido.Estado
+                                            tr.trpedido        
+                                                td.pedido-caracteristic
+                                                    p Metodo de pago:
+                                                td.pedido-info     
+                                                    p=pedido.MetodoPago
+                                            tr.trpedido
+                                                td.pedido-caracteristic
+                                                    p Fecha y hora de Envío:
+                                                td.pedido-info     
+                                                    p=pedido.FechaHoraEntrega
+                                            tr.trpedido        
+                                                td.pedido-caracteristic
+                                                    p Lugar de Envío:
+                                                td.pedido-info     
+                                                    p=pedido.LugarEntrega
+                                                tr.trpedido        
+                                                    td.pedido-caracteristic
+                                                        p Total:
+                                                    td.pedido-info     
+                                                        p=pedido.TotalPedido
+                                                each vendedor in pedido.Vendedores 
+                                                    tr.trpedido
+                                                        tr.trpedido 
+                                                            td.pedido-menu(colspan="2")
+                                                                h1 Productos del vendedor #{vendedor.NombreUsuario + " " + vendedor.ApellidoUsuario }   
+                                                            each producto in vendedor.Productos
+                                                                    tr.trpedido
+                                                                    td.pedido-caracteristic
+                                                                        p Nombre:
+                                                                    td.pedido-info    
+                                                                        p=producto.Nombre
+                                                                    tr.trpedido
+                                                                        td.pedido-caracteristic
+                                                                            p Cantidad:
+                                                                        td.pedido-info     
+                                                                            p=producto.Cantidad
+                                                                    tr.trpedido        
+                                                                        td.pedido-caracteristic
+                                                                            p Precio Unitario:
+                                                                        td.pedido-info     
+                                                                            p=producto.PrecioUnitario
+                                                                    tr.trpedido        
+                                                                        td.pedido-caracteristic
+                                                                            p Imagen:
+                                                                        td.pedido-info     
+                                                                            img.product-photo(src='/img_product/' + producto.imagen)
+                                                            tr.trpedido        
+                                                                td.pedido-menu(colspan="2" style="background-color:#ff9900;")
+                                                                    p Total del vendedor: #{vendedor.TotalVendedor}                               
+
+                                                    
+                                else
+                                    h1 No tienes pedidos pendientes    

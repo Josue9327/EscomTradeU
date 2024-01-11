@@ -18,10 +18,10 @@ block content2
                                     td.product-info(rowspan="6") 
                                         img.product-photo(src='/img_product/' + product.product_imagenroute) 
                                     td.product-options(rowspan="6")             
-                                        form.formularioPublicar#producto_editar(action="/producto_editar/" + product.id + "#cargaprincipal" method="get")
-                                            button(type="submit") Editar producto
-                                        form.formularioPublicar#producto_eliminar(action="/miproducto_borrar/" + product.id method="get")
-                                            button(type="submit") Eliminar producto         
+                                        form(action="/producto_editar/" + product.id + "#cargaprincipal" method="get")
+                                            button.button#producto_editar(type="submit") Editar producto
+                                        form(action="/miproducto_borrar/" + product.id method="get")
+                                            button.button#producto_eliminar(type="submit") Eliminar producto         
                                 tr.trproduct
                                     td.product-caracteristic
                                         p Cantidad:

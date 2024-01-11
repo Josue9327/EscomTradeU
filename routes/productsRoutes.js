@@ -162,7 +162,6 @@ router.get('/categoria/:categoria', ensureAuthenticated, (req, res) =>{
                     product_added: formattedDate
                 };
             });
-            console.log(formattedResults);
             res.render("buscadorp", { activePage: 'buscarp', img_route: imgname, products: formattedResults, error_msg });
         }
     );
